@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TASI Alpha Cell Dashboard - Tracking Saudi Vision 2030 → 2040 with real-time market data and AI sentiment">
+    <meta name="theme-color" content="#047857">
+    <title>TASI Alpha Cell Dashboard</title>
+    
+    <!-- Preconnect to CDNs -->
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script>
+                tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: { 50: '#f0f9ff', 100: '#e0f2fe', 400: '#38bdf8', 500: '#0ea5e9', 600: '#0284c7', 900: '#0c4a6e' },
+                        surface: { 50: '#f8fafc', 800: '#1e293b', 900: '#0f172a', 950: '#020617' }
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'spin-slow': 'spin 2s linear infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate'
+                    },
+                    keyframes: {
+                        glow: {
+                            '0%': { boxShadow: '0 0 5px rgba(56, 189, 248, 0.2)' },
+                            '100%': { boxShadow: '0 0 20px rgba(56, 189, 248, 0.6)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Unified Premium Dark Theme */
+        body { 
+            background-color: #0f172a; 
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(14, 165, 233, 0.08), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(4, 120, 87, 0.08), transparent 25%);
+            color: #f8fafc; 
+        }
+        .card { 
+            background: rgba(30, 41, 59, 0.4); 
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08); 
+            border-radius: 1.25rem; 
+            padding: 1.5rem; 
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .card-hover:hover { 
+            transform: translateY(-4px);
+            background: rgba(30, 41, 59, 0.7);
+            border-color: rgba(56, 189, 248, 0.3);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+        }
+        .metric { font-size: 2rem; font-weight: 700; color: #f8fafc; font-feature-settings: "tnum"; font-variant-numeric: tabular-nums; letter-spacing: -0.025em; }
+        .label { font-size: 0.875rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 500; }
+        .positive { color: #34d399; } 
+        .negative { color: #f87171; } 
+        
+        .skeleton { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; background-color: rgba(51, 65, 85, 0.5); border-radius: 0.375rem; }
+        
+        html { scroll-behavior: smooth; }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #475569; }
+        
+        .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        
+        /* Unified Gradient Text */
+        .text-gradient {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-image: linear-gradient(to right, #38bdf8, #34d399);
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen transition-colors duration-200">
+    <!-- Header -->
+    <header class="bg-slate-900/80 backdrop-blur-md border-b border-white/10 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                <div class="flex items-center gap-3">
+                    <div class="p-2 bg-tasi-600 rounded-lg">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="text-xl sm:text-2xl font-bold text-white">TASI Alpha Cell</h1>
+                        <p class="text-xs sm:text-sm text-slate-400">Tracking Saudi Vision 2030 → 2040</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="text-right hidden sm:block">
+                        <p id="lastUpdate" class="text-xs sm:text-sm text-slate-400">Last updated: --</p>
+                        <p id="dataStatus" class="text-xs sm:text-sm text-slate-400 flex items-center justify-end gap-1">
+                            <span class="w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></span> Loading...
+                        </p>
+                    </div>
+                    <button id="refreshBtn" onclick="loadData()" class="p-2 rounded-lg bg-slate-800/50 text-slate-300 border border-slate-700 hover:bg-slate-700/50 hover:border-slate-600 transition" title="Refresh data">
+                        <svg id="refreshIcon" class="w-5 h-5 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                        </svg>
+                    </button>
+                    <button id="themeToggle" onclick="toggleTheme()" class="p-2 rounded-lg bg-slate-800/50 text-slate-300 border border-slate-700 hover:bg-slate-700/50 hover:border-slate-600 transition" title="Toggle theme">
+                        <svg id="themeIcon" class="w-5 h-5 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8 space-y-6">
+        <!-- Error Banner -->
+        <div id="errorBanner" class="hidden bg-red-900/20 border border-red-500/30 rounded-xl p-4">
+            <div class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-red-600 dark:text-red-400 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                <div class="flex-1">
+                    <h3 class="text-sm font-medium text-red-300">Data Loading Error</h3>
+                    <p id="errorMessage" class="text-sm text-red-400 text-opacity-80 mt-1">Unable to load market data. Please try again.</p>
+                </div>
+                <button onclick="loadData()" class="text-sm text-red-600 dark:text-red-400 hover:text-red-800 dark:hover:text-red-200 font-medium">Retry</button>
+            </div>
+        </div>
+
+        <!-- Key Metrics Row -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-6">
+            <!-- TASI Card -->
+            <div class="card card-hover ">
+                <div class="flex items-center justify-between">
+                    <div class="min-w-0">
+                        <p class="label truncate">TASI Index</p>
+                        <p id="tasiValue" class="metric skeleton">--</p>
+                        <p id="tasiChange" class="text-sm mt-1 font-medium">--</p>
+                    </div>
+                    <div class="p-3 bg-brand-900/50 border border-brand-500/20 rounded-lg flex-shrink-0">
+                        <svg class="w-6 h-6 sm:w-8 sm:h-8 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QQQ Card -->
+            <div class="card card-hover ">
+                <div class="flex items-center justify-between">
+                    <div class="min-w-0">
+                        <p class="label truncate">QQQ (Tech ETF)</p>
+                        <p id="qqqValue" class="metric skeleton">--</p>
+                        <p id="qqqChange" class="text-sm mt-1 font-medium">--</p>
+                    </div>
+                    <div class="p-3 bg-brand-900/50 border border-brand-500/20 rounded-lg flex-shrink-0">
+                        <svg class="w-6 h-6 sm:w-8 sm:h-8 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Oil Card -->
+            <div class="card card-hover ">
+                <div class="flex items-center justify-between">
+                    <div class="min-w-0">
+                        <p class="label truncate">Brent Crude</p>
+                        <p id="oilValue" class="metric skeleton">--</p>
+                        <p id="oilChange" class="text-sm mt-1 font-medium">--</p>
+                    </div>
+                    <div class="p-3 bg-brand-900/50 border border-brand-500/20 rounded-lg flex-shrink-0">
+                        <svg class="w-6 h-6 sm:w-8 sm:h-8 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TASI/QQQ Ratio -->
+            <div class="card card-hover ">
+                <div class="flex items-center justify-between">
+                    <div class="min-w-0">
+                        <p class="label truncate">TASI/QQQ Ratio</p>
+                        <p id="ratioValue" class="metric skeleton">--</p>
+                        <p class="text-xs text-slate-400 mt-1">Relative strength</p>
+                    </div>
+                    <div class="p-3 bg-brand-900/50 border border-brand-500/20 rounded-lg flex-shrink-0">
+                        <svg class="w-6 h-6 sm:w-8 sm:h-8 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI News Count -->
+            <div class="card card-hover ">
+                <div class="flex items-center justify-between">
+                    <div class="min-w-0">
+                        <p class="label truncate">AI News (7d)</p>
+                        <p id="newsCount" class="metric skeleton">--</p>
+                        <p class="text-xs text-slate-400 mt-1">Sentiment tracked</p>
+                    </div>
+                    <div class="p-3 bg-brand-900/50 border border-brand-500/20 rounded-lg flex-shrink-0">
+                        <svg class="w-6 h-6 sm:w-8 sm:h-8 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts Row -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <!-- TASI Performance Chart -->
+            <div class="card">
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="text-lg font-semibold text-white">TASI Performance (1 Month)</h2>
+                    <span class="text-xs text-slate-400 px-2 py-1 bg-slate-800/50 text-slate-300 border border-slate-700 rounded">Daily Close</span>
+                </div>
+                <div class="relative h-48 sm:h-56">
+                    <canvas id="tasiChart"></canvas>
+                    <div id="tasiChartSkeleton" class="absolute inset-0 skeleton"></div>
+                </div>
+            </div>
+
+            <!-- TASI vs QQQ Comparison -->
+            <div class="card">
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="text-lg font-semibold text-white">TASI vs QQQ (Normalized)</h2>
+                    <span class="text-xs text-slate-400 px-2 py-1 bg-slate-800/50 text-slate-300 border border-slate-700 rounded">Base 100</span>
+                </div>
+                <div class="relative h-48 sm:h-56">
+                    <canvas id="comparisonChart"></canvas>
+                    <div id="comparisonChartSkeleton" class="absolute inset-0 skeleton"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI Sentiment Feed -->
+        <div class="card">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-lg font-semibold text-white">AI Sentiment Analysis</h2>
+                <span id="sentimentBadge" class="text-xs px-3 py-1 font-bold rounded-full bg-slate-800/50 text-slate-300 border border-slate-700">--</span>
+            </div>
+            <div id="aiSummary" class="mb-6 p-4 rounded-xl bg-brand-900/20 border border-brand-500/20 backdrop-blur-md shadow-sm">
+                <p class="text-brand-50 text-sm sm:text-base leading-relaxed" id="aiSummaryText">
+                    Loading AI summary...
+                </p>
+            </div>
+            <h3 class="text-sm font-medium text-slate-400 mb-3 uppercase tracking-wide flex items-center gap-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg>
+                Recent Headlines
+            </h3>
+            <div id="newsFeed" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Loading state -->
+                <div class="col-span-full space-y-3">
+                    <div class="skeleton h-20 rounded-lg"></div>
+                    <div class="skeleton h-20 rounded-lg"></div>
+                    <div class="skeleton h-20 rounded-lg"></div>
+                </div>
+            </div>
+            <div id="noNewsMessage" class="hidden text-center py-8">
+                <svg class="w-12 h-12 mx-auto text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/>
+                </svg>
+                <p class="text-slate-400 mt-3">No news articles available</p>
+            </div>
+        </div>
+
+        <!-- Macro Indicators -->
+        <div class="card">
+            <h2 class="text-lg font-semibold text-white mb-4">Macro Indicators</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
+                <div class="text-center p-4 sm:p-6 bg-slate-800/30 border border-brand-500/20 shadow-[0_0_15px_rgba(56,189,248,0.1)] rounded-xl">
+                    <p class="label">2030 Target</p>
+                    <p class="text-2xl sm:text-3xl font-bold text-brand-400 mt-2">15,000</p>
+                    <p class="text-xs text-slate-400 mt-1">TASI Index Goal</p>
+                </div>
+                <div class="text-center p-4 sm:p-6 bg-slate-800/30 border border-brand-500/20 shadow-[0_0_15px_rgba(56,189,248,0.1)] rounded-xl">
+                    <p class="label">2040 Vision</p>
+                    <p class="text-2xl sm:text-3xl font-bold text-brand-400 mt-2">50,000</p>
+                    <p class="text-xs text-slate-400 mt-1">Long-term Target</p>
+                </div>
+                <div class="text-center p-4 sm:p-6 bg-slate-800/30 border border-brand-500/20 shadow-[0_0_15px_rgba(56,189,248,0.1)] rounded-xl">
+                    <p class="label">Current Progress</p>
+                    <p id="progressPercent" class="text-2xl sm:text-3xl font-bold text-brand-400 mt-2 skeleton">--%</p>
+                    <p class="text-xs text-slate-400 mt-1">To 2030 Goal</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-12 py-6 border-t border-white/10 bg-slate-900/80 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+                <p class="text-xs sm:text-sm text-slate-400 text-center sm:text-left">
+                    Data: Yahoo Finance • NewsAPI • Updates hourly via GitHub Actions
+                </p>
+                <div class="flex items-center gap-4">
+                    <a href="https://github.com" class="text-xs text-slate-400 hover:text-gray-700 dark:hover:text-gray-300">GitHub</a>
+                    <a href="#" id="sourceLink" class="text-xs text-slate-400 hover:text-gray-700 dark:hover:text-gray-300">Source Code</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Configuration
+        const CONFIG = {
+            TASI_COLOR: 'rgb(56, 189, 248)',
+            QQQ_COLOR: 'rgb(52, 211, 153)',
+            TASI_2030_TARGET: 15000,
+            CACHE_DURATION: 5 * 60 * 1000, // 5 minutes
+            DATA_URL: 'data.json'
+        };
+
+        // State
+        let charts = { tasi: null, comparison: null };
+        let lastLoadTime = null;
+
+        // Theme management
+        function initTheme() {
+            const saved = localStorage.getItem('theme');
+            if (true) {
+                document.documentElement.classList.add('dark');
+            }
+        }
+
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+            localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+        }
+
+        // Format numbers
+        function formatNumber(num, decimals = 2) {
+            if (num === null || num === undefined || isNaN(num)) return '--';
+            return num.toLocaleString('en-US', { 
+                minimumFractionDigits: decimals, 
+                maximumFractionDigits: decimals 
+            });
+        }
+
+        // Format date
+        function formatDate(dateStr) {
+            if (!dateStr) return '--';
+            const date = new Date(dateStr);
+            return date.toLocaleDateString('en-US', { 
+                month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' 
+            });
+        }
+
+        // Calculate percentage change
+        function calcChange(current, previous) {
+            if (!current || !previous) return 0;
+            return ((current - previous) / previous) * 100;
+        }
+
+        // Set status indicator
+        function setStatus(status, message) {
+            const statusEl = document.getElementById('dataStatus');
+            const colors = {
+                live: 'bg-green-500 text-green-500',
+                loading: 'bg-yellow-400 text-yellow-500',
+                error: 'bg-red-500 text-red-500',
+                cached: 'bg-blue-500 text-blue-500'
+            };
+            const color = colors[status] || colors.loading;
+            statusEl.innerHTML = `<span class="w-2 h-2 ${color} rounded-full animate-pulse"></span> ${message}`;
+        }
+
+        // Show/hide error banner
+        function showError(show, message) {
+            const banner = document.getElementById('errorBanner');
+            const msgEl = document.getElementById('errorMessage');
+            if (show) {
+                banner.classList.remove('hidden');
+                if (message) msgEl.textContent = message;
+            } else {
+                banner.classList.add('hidden');
+            }
+        }
+
+        // Remove skeleton class from element
+        function removeSkeleton(id) {
+            const el = document.getElementById(id);
+            if (el) el.classList.remove('skeleton');
+        }
+
+        // Hide chart skeletons
+        function hideChartSkeletons() {
+            document.getElementById('tasiChartSkeleton')?.classList.add('hidden');
+            document.getElementById('comparisonChartSkeleton')?.classList.add('hidden');
+        }
+
+        // Load data from JSON
+        async function loadData(force = false) {
+            const refreshBtn = document.getElementById('refreshBtn');
+            const refreshIcon = document.getElementById('refreshIcon');
+            
+            // Check cache
+            if (!force && lastLoadTime && (Date.now() - lastLoadTime) < CONFIG.CACHE_DURATION) {
+                console.log('Using cached data');
+                return;
+            }
+
+            // Show loading state
+            setStatus('loading', 'Loading...');
+            refreshIcon.classList.add('animate-spin');
+            showError(false);
+
+            try {
+                const response = await fetch(CONFIG.DATA_URL, { 
+                    cache: 'no-cache',
+                    headers: { 'Cache-Control': 'no-cache' }
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                
+                const data = await response.json();
+                
+                // Validate data structure
+                if (!data.tasi || !data.tasi.close || !data.qqq || !data.qqq.close) {
+                    throw new Error('Invalid data structure');
+                }
+
+                lastLoadTime = Date.now();
+
+                // Update last update time
+                document.getElementById('lastUpdate').textContent = `Last updated: ${formatDate(data.timestamp)}`;
+                setStatus('live', 'Live');
+
+                // Update TASI metrics
+                const tasi = data.tasi;
+                const tasiValue = tasi.close[tasi.close.length - 1];
+                const tasiPrev = tasi.close[tasi.close.length - 2] || tasiValue;
+                const tasiChange = calcChange(tasiValue, tasiPrev);
+                
+                const tasiValueEl = document.getElementById('tasiValue');
+                const tasiChangeEl = document.getElementById('tasiChange');
+                tasiValueEl.textContent = formatNumber(tasiValue);
+                tasiChangeEl.textContent = `${tasiChange >= 0 ? '+' : ''}${formatNumber(tasiChange)}%`;
+                tasiChangeEl.className = `text-sm mt-1 font-medium ${tasiChange >= 0 ? 'positive' : 'negative'}`;
+                removeSkeleton('tasiValue');
+
+                // Update QQQ metrics
+                const qqq = data.qqq;
+                const qqqValue = qqq.close[qqq.close.length - 1];
+                const qqqPrev = qqq.close[qqq.close.length - 2] || qqqValue;
+                const qqqChange = calcChange(qqqValue, qqqPrev);
+                
+                const qqqValueEl = document.getElementById('qqqValue');
+                const qqqChangeEl = document.getElementById('qqqChange');
+                qqqValueEl.textContent = formatNumber(qqqValue);
+                qqqChangeEl.textContent = `${qqqChange >= 0 ? '+' : ''}${formatNumber(qqqChange)}%`;
+                qqqChangeEl.className = `text-sm mt-1 font-medium ${qqqChange >= 0 ? 'positive' : 'negative'}`;
+                removeSkeleton('qqqValue');
+
+                // Update Oil metrics
+                if (data.oil) {
+                    const oil = data.oil;
+                    const oilValue = oil.close[oil.close.length - 1];
+                    const oilPrev = oil.close[oil.close.length - 2] || oilValue;
+                    const oilChange = calcChange(oilValue, oilPrev);
+                    
+                    const oilValueEl = document.getElementById('oilValue');
+                    const oilChangeEl = document.getElementById('oilChange');
+                    oilValueEl.textContent = formatNumber(oilValue);
+                    oilChangeEl.textContent = `${oilChange >= 0 ? '+' : ''}${formatNumber(oilChange)}%`;
+                    oilChangeEl.className = `text-sm mt-1 font-medium ${oilChange >= 0 ? 'positive' : 'negative'}`;
+                    removeSkeleton('oilValue');
+                }
+
+                // Update ratio
+                const ratio = tasiValue / qqqValue;
+                document.getElementById('ratioValue').textContent = formatNumber(ratio, 3);
+                removeSkeleton('ratioValue');
+
+                // Update news count
+                const newsCount = data.news ? data.news.length : 0;
+                document.getElementById('newsCount').textContent = newsCount;
+                removeSkeleton('newsCount');
+
+                // Update progress to 2030 goal
+                const progress = (tasiValue / CONFIG.TASI_2030_TARGET) * 100;
+                const progressEl = document.getElementById('progressPercent');
+                progressEl.textContent = `${formatNumber(progress, 1)}%`;
+                removeSkeleton('progressPercent');
+
+                // Render charts
+                renderTasiChart(tasi);
+                renderComparisonChart(tasi, qqq);
+                hideChartSkeletons();
+
+                // Render news feed and AI sentiment
+                renderNewsFeed(data.news || [], data.ai_analysis || {});
+
+            } catch (error) {
+                console.error('Error loading data:', error);
+                setStatus('error', 'Offline');
+                showError(true, `Failed to load data: ${error.message}. Please try again later.`);
+                
+                // Show fallback message for news
+                document.getElementById('newsFeed').innerHTML = '';
+                document.getElementById('noNewsMessage').classList.remove('hidden');
+            } finally {
+                refreshIcon.classList.remove('animate-spin');
+            }
+        }
+
+        // Render TASI chart
+        function renderTasiChart(tasi) {
+            const ctx = document.getElementById('tasiChart').getContext('2d');
+            const labels = tasi.close.map((_, i) => {
+                const date = new Date(tasi.index[i]);
+                return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+            });
+
+            // Destroy existing chart
+            if (charts.tasi) {
+                charts.tasi.destroy();
+            }
+
+            charts.tasi = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'TASI',
+                        data: tasi.close,
+                        borderColor: CONFIG.TASI_COLOR,
+                        backgroundColor: 'rgba(56, 189, 248, 0.1)',
+                        fill: true,
+                        tension: 0.4,
+                        pointRadius: 2,
+                        pointHoverRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: {
+                        intersect: false,
+                        mode: 'index'
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                            padding: 12,
+                            titleFont: { size: 13 },
+                            bodyFont: { size: 13 },
+                            callbacks: {
+                                label: (ctx) => `Close: ${formatNumber(ctx.parsed.y)}`
+                            }
+                        }
+                    },
+                    scales: {
+                        x: { 
+                            display: true, 
+                            grid: { display: false },
+                            ticks: { maxRotation: 0, autoSkip: true }
+                        },
+                        y: { 
+                            display: true, 
+                            grid: { color: 'rgba(0,0,0,0.05)' },
+                            ticks: { callback: (v) => formatNumber(v, 0) }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Render comparison chart
+        function renderComparisonChart(tasi, qqq) {
+            const ctx = document.getElementById('comparisonChart').getContext('2d');
+            const labels = tasi.close.map((_, i) => {
+                const date = new Date(tasi.index[i]);
+                return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+            });
+
+            // Normalize to start at 100
+            const tasiNorm = tasi.close.map(v => (v / tasi.close[0]) * 100);
+            const qqqNorm = qqq.close.map(v => (v / qqq.close[0]) * 100);
+
+            // Destroy existing chart
+            if (charts.comparison) {
+                charts.comparison.destroy();
+            }
+
+            charts.comparison = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'TASI',
+                            data: tasiNorm,
+                            borderColor: CONFIG.TASI_COLOR,
+                            backgroundColor: 'rgba(56, 189, 248, 0.1)',
+                            tension: 0.4,
+                            pointRadius: 2,
+                            pointHoverRadius: 4
+                        },
+                        {
+                            label: 'QQQ',
+                            data: qqqNorm,
+                            borderColor: CONFIG.QQQ_COLOR,
+                            backgroundColor: 'rgba(52, 211, 153, 0.1)',
+                            tension: 0.4,
+                            pointRadius: 2,
+                            pointHoverRadius: 4
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: {
+                        intersect: false,
+                        mode: 'index'
+                    },
+                    plugins: {
+                        legend: { position: 'top' },
+                        tooltip: {
+                            backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                            padding: 12,
+                            titleFont: { size: 13 },
+                            bodyFont: { size: 13 },
+                            callbacks: {
+                                label: (ctx) => `${ctx.dataset.label}: ${formatNumber(ctx.parsed.y, 1)} (base 100)`
+                            }
+                        }
+                    },
+                    scales: {
+                        x: { 
+                            display: true, 
+                            grid: { display: false },
+                            ticks: { maxRotation: 0, autoSkip: true }
+                        },
+                        y: { 
+                            display: true, 
+                            grid: { color: 'rgba(0,0,0,0.05)' },
+                            ticks: { callback: (v) => `${v}%` }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Render news feed and AI analysis
+        function renderNewsFeed(news, ai_analysis) {
+            const container = document.getElementById('newsFeed');
+            const noNewsMsg = document.getElementById('noNewsMessage');
+            const summaryText = document.getElementById('aiSummaryText');
+            const sentimentBadge = document.getElementById('sentimentBadge');
+            
+            // Render AI Analysis
+            if (ai_analysis && ai_analysis.summary) {
+                summaryText.textContent = ai_analysis.summary;
+                sentimentBadge.textContent = ai_analysis.sentiment || 'Neutral';
+                
+                // Colorize badge based on sentiment
+                const lowerSentiment = (ai_analysis.sentiment || '').toLowerCase();
+                if (lowerSentiment.includes('bullish')) {
+                    sentimentBadge.className = 'text-xs px-3 py-1 font-bold rounded-full bg-brand-900/50 border border-brand-500/20 text-green-700 dark:text-green-300 border border-green-200 dark:border-green-800';
+                } else if (lowerSentiment.includes('bearish')) {
+                    sentimentBadge.className = 'text-xs px-3 py-1 font-bold rounded-full bg-brand-900/50 border border-brand-500/20 text-red-700 dark:text-red-300 border border-red-500/30';
+                } else {
+                    sentimentBadge.className = 'text-xs px-3 py-1 font-bold rounded-full bg-brand-900/50 border border-brand-500/20 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800';
+                }
+            } else {
+                summaryText.textContent = "AI sentiment analysis not available.";
+                sentimentBadge.textContent = "Unknown";
+                sentimentBadge.className = 'text-xs px-3 py-1 font-bold rounded-full bg-gray-100 dark:bg-gray-800 text-slate-400';
+            }
+            
+            if (!news || news.length === 0) {
+                container.innerHTML = '';
+                noNewsMsg.classList.remove('hidden');
+                return;
+            }
+            
+            noNewsMsg.classList.add('hidden');
+            container.innerHTML = news.slice(0, 6).map((article, index) => {
+                const source = article.source || 'Unknown';
+                const date = formatDate(article.publishedAt);
+                const title = article.title || 'No title';
+                const url = article.url || '#';
+                
+                return `
+                    <article class="p-4 bg-slate-800/40 border border-white/5 rounded-lg hover:bg-slate-700/60 hover:border-brand-500/30 transition cursor-pointer" 
+                             onclick="window.open('${url}', '_blank', 'noopener,noreferrer')">
+                        <div class="flex items-start gap-2">
+                            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-brand-900/50 border border-brand-500/20 flex items-center justify-center text-xs font-medium text-brand-400 dark:text-orange-400">
+                                ${index + 1}
+                            </span>
+                            <div class="min-w-0 flex-1">
+                                <h3 class="text-sm font-medium text-white line-clamp-2" title="${title.replace(/"/g, '&quot;')}">
+                                    ${title}
+                                </h3>
+                                <p class="text-xs text-slate-400 mt-2">
+                                    ${source} • ${date}
+                                </p>
+                                <span class="text-xs text-brand-400 dark:text-tasi-400 hover:text-tasi-700 dark:hover:text-tasi-300 mt-2 inline-flex items-center gap-1">
+                                    Read more
+                                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+                    </article>
+                `;
+            }).join('');
+        }
+
+        // Set source link to current repo
+        function setSourceLink() {
+            const repo = 'https://github.com/muxd22-alt/TASI';
+            document.getElementById('sourceLink').href = repo;
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            initTheme();
+            setSourceLink();
+            loadData();
+            
+            // Auto-refresh every 5 minutes
+            setInterval(() => loadData(), 5 * 60 * 1000);
+        });
+    </script>
+</body>
+</html>

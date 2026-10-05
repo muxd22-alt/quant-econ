@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autonomous Economy Tracker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --surface-color: rgba(25, 33, 49, 0.6);
+            --border-color: rgba(255, 255, 255, 0.1);
+            --text-primary: #ffffff;
+            --text-secondary: #94a3b8;
+            --accent-green: #10b981;
+            --accent-blue: #3b82f6;
+            --accent-neon: #00f2fe;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            min-height: 100vh;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(16, 185, 129, 0.08), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.08), transparent 25%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            width: 100%;
+            padding: 2rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+            background: rgba(11, 15, 25, 0.8);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, #10b981, #00f2fe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        p.subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 1.5rem;
+            backdrop-filter: blur(12px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .status-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .status-badge {
+            font-size: 3rem;
+            font-weight: 800;
+            margin: 1rem 0;
+            padding: 0.5rem 2rem;
+            border-radius: 12px;
+            letter-spacing: 2px;
+        }
+
+        .status-NEAR {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--accent-green);
+            border: 1px solid var(--accent-green);
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.2);
+        }
+
+        .status-FAR {
+            background: rgba(244, 63, 94, 0.1);
+            color: #f43f5e;
+            border: 1px solid #f43f5e;
+            box-shadow: 0 0 20px rgba(244, 63, 94, 0.2);
+        }
+
+        .progress-circle {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: conic-gradient(var(--accent-neon) var(--progress), var(--surface-color) 0deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 1rem auto;
+        }
+
+        .progress-circle::before {
+            content: "";
+            position: absolute;
+            width: 130px;
+            height: 130px;
+            background: var(--bg-color);
+            border-radius: 50%;
+        }
+
+        .progress-value {
+            position: relative;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--text-primary);
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .metric-card {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .metric-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .metric-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .metric-score {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--accent-neon);
+        }
+
+        .trend-up { color: var(--accent-green); }
+        .trend-down { color: #f43f5e; }
+        .trend-stable { color: var(--text-secondary); }
+
+        .metric-bar-container {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .metric-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-neon));
+            border-radius: 4px;
+            transition: width 1s ease-in-out;
+        }
+
+        .metric-insight {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            background: rgba(0,0,0,0.2);
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 3px solid var(--accent-blue);
+        }
+
+        .news-section {
+            margin-top: 2rem;
+        }
+
+        .news-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .news-section h2::before {
+            content: "";
+            width: 8px;
+            height: 24px;
+            background: var(--accent-green);
+            border-radius: 4px;
+        }
+
+        .news-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .news-item {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all 0.2s;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .news-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--accent-blue);
+        }
+
+        .news-item h3 {
+            font-size: 1.2rem;
+            color: var(--accent-neon);
+        }
+
+        .news-item p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .news-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .relevance-tag {
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--accent-green);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        
+        #lastUpdated {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            padding-bottom: 2rem;
+        }
+
+        /* Loading State */
+        .loading {
+            text-align: center;
+            padding: 4rem;
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(255,255,255,0.1);
+            border-radius: 50%;
+            border-top-color: var(--accent-neon);
+            animation: spin 1s ease-in-out infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+            .progress-circle {
+                width: 120px;
+                height: 120px;
+            }
+            .progress-circle::before {
+                width: 100px;
+                height: 100px;
+            }
+            .progress-value {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Autonomous Economy Tracker</h1>
+        <p class="subtitle">Daily AI-Powered Sentiment & Progress Analysis vs. UHI Goals</p>
+    </header>
+
+    <div class="container" id="app">
+        <div class="loading">
+            <div class="spinner"></div>
+            Analyzing latest signals...
+        </div>
+    </div>
+
+    <script>
+        const formatTitle = (key) => {
+            const titles = {
+                'ai_automation': 'AI & Automation Substation',
+                'pif_growth': 'PIF Sovereign Wealth Growth',
+                'ubi_steps': 'UBI / Citizens Account Evolution',
+                'deflationary_effects': 'Deflationary Tech Effects'
+            };
+            return titles[key] || key;
+        };
+
+        const getTrendIcon = (trend) => {
+            if (trend === 'up') return '<span class="trend-up">▲ Breakout</span>';
+            if (trend === 'down') return '<span class="trend-down">▼ Retreat</span>';
+            return '<span class="trend-stable">▶ Stable</span>';
+        };
+
+        async function init() {
+            try {
+                // Fetch the JSON data
+                const response = await fetch('tracker_data.json');
+                if (!response.ok) throw new Error("Failed to load data.");
+                const data = await response.json();
+
+                renderDashboard(data);
+            } catch (error) {
+                document.getElementById('app').innerHTML = `
+                    <div style="text-align:center; padding: 4rem; color: #f43f5e;">
+                        <h2>Error Loading Tracker Data</h2>
+                        <p>${error.message}</p>
+                        <p>Waiting for the first GitHub Action run to generate insights.</p>
+                    </div>
+                `;
+            }
+        }
+
+        function renderDashboard(data) {
+            let metricsHtml = '';
+
+            // Generate Metrics Cards
+            for (const [key, metric] of Object.entries(data.metrics)) {
+                metricsHtml += `
+                    <div class="card metric-card">
+                        <div class="metric-header">
+                            <span class="metric-title">${formatTitle(key)}</span>
+                            <span class="metric-score">${metric.score}/10</span>
+                        </div>
+                        <div class="metric-bar-container">
+                            <div class="metric-bar" style="width: ${metric.score * 10}%"></div>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
+                            <span>Trend: ${getTrendIcon(metric.trend)}</span>
+                        </div>
+                        <div class="metric-insight">
+                            ✨ ${metric.insight}
+                        </div>
+                    </div>
+                `;
+            }
+
+            // Generate News List
+            let newsHtml = '';
+            if (data.latest_news && data.latest_news.length > 0) {
+                newsHtml = data.latest_news.map(news => `
+                    <a href="${news.link !== '#' ? news.link : 'javascript:void(0)'}" target="${news.link !== '#' ? '_blank' : '_self'}" class="news-item">
+                        <h3>${news.title}</h3>
+                        <p>${news.summary}</p>
+                        <div class="news-meta">
+                            <span>Open in Browser ↗</span>
+                            <span class="relevance-tag">Relevance: ${news.relevance_score}/10</span>
+                        </div>
+                    </a>
+                `).join('');
+            } else {
+                newsHtml = '<p style="color: var(--text-secondary);">No definitive news processed for today.</p>';
+            }
+
+            const appDiv = document.getElementById('app');
+            
+            appDiv.innerHTML = `
+                <div class="hero-stats">
+                    <div class="card status-container">
+                        <h2 style="color: var(--text-secondary); font-size: 1.2rem;">Current Trajectory</h2>
+                        <div class="status-badge status-${data.overall_status}">${data.overall_status}</div>
+                        <p style="color: var(--text-secondary);">Is the Kingdom moving <strong>NEAR</strong> or <strong>FAR</strong> from the UHI Autonomous state?</p>
+                    </div>
+                    
+                    <div class="card" style="text-align: center;">
+                        <h2 style="color: var(--text-secondary); font-size: 1.2rem;">Convergence Momentum</h2>
+                        <div class="progress-circle" style="--progress: ${data.progress_score_pct}%">
+                            <span class="progress-value">${data.progress_score_pct}%</span>
+                        </div>
+                        <p style="color: var(--text-secondary);">Overall progress score derived from aggregate AI sentiment.</p>
+                    </div>
+                </div>
+
+                <div class="metrics-grid">
+                    ${metricsHtml}
+                </div>
+
+                <div class="news-section">
+                    <h2>AI Signal Intelligence (Top News)</h2>
+                    <div class="news-list">
+                        ${newsHtml}
+                    </div>
+                </div>
+
+                <div id="lastUpdated">
+                    Last Global Refresh: ${new Date(data.last_updated).toLocaleString()}
+                </div>
+            `;
+        }
+
+        // Initialize App
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>

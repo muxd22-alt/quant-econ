@@ -1,0 +1,47 @@
+{
+    "last_updated": "2026-04-02T05:44:11.717648Z",
+    "overall_status": "NEAR",
+    "progress_score_pct": 82,
+    "metrics": {
+        "ai_automation": {
+            "score": 9,
+            "trend": "up",
+            "insight": "The official designation of 2026 as the Year of AI, combined with massive data center investments, signals aggressive policy alignment and infrastructure scaling for widespread labor automation."
+        },
+        "pif_growth": {
+            "score": 8,
+            "trend": "up",
+            "insight": "Strategic acquisitions of African critical minerals and active regional M&A continue to diversify the sovereign wealth portfolio away from traditional tax and oil dependencies."
+        },
+        "ubi_steps": {
+            "score": 7,
+            "trend": "up",
+            "insight": "A direct royal mandate extending the Citizen Account program institutionalizes the direct cash-transfer infrastructure required for a future UBI rollout."
+        },
+        "deflationary_effects": {
+            "score": 6,
+            "trend": "stable",
+            "insight": "Grid modernization and AI-driven energy transition projects are building the foundation for long-term cost reductions, though immediate consumer price impacts remain gradual."
+        }
+    },
+    "latest_news": [
+        {
+            "title": "Saudi Arabia designates 2026 the Year of Artificial Intelligence - Arab News",
+            "summary": "The official designation of 2026 as the Year of AI accelerates national policy alignment and funding toward labor automation, directly boosting the ai_automation pillar.",
+            "relevance_score": 10,
+            "link": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE9Ic2hDWU1qME1yaV9WaVQ2U1A1WDNhYU8zdGo4NWcyNEtDT25Kd1RIUjRxVy1scjRSNmNyS2lQaXBYWGVNSkpmV1NzZE5BT3pNVkl2RmFVLWt0TE1yX1g0?oc=5"
+        },
+        {
+            "title": "Urgent Royal Order: King Salman directs the extension of the Citizen Account Program - المتداول العربي",
+            "summary": "The royal mandate to extend the Citizen Account program provides immediate financial stability while institutionalizing the direct cash-transfer infrastructure needed for future UBI expansion.",
+            "relevance_score": 9,
+            "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxNTWpFM0NoUzNMeXN0a190YWJQMTNSby1TWWNiVWdIemFkR3RvdVZXMHJSbDI1NndEN1dTeThZWGtBXzVxc0xramlPdk43azZMT3RnNF9sdTBHR1UxRVVwNm5kamxmYTZqbEhMR3hZWnRWTzFTNnZoTzNTQ09ZZ2VpczV2SzJybXVSRFBZUUVPZGMtNmIzaGY1RXNWdTBzbnpTX3RIZVdVX1Z5ZjdLdUhwZndLb3gxMEl6U0hRcTNob0tvVmIwbGZFeURHN0tQamVC?oc=5"
+        },
+        {
+            "title": "Saudi Arabia Bets on Artificial Intelligence: Data Center Market to Jump 200% in 6 Years to $6 Billion by 2031 - maaal.com",
+            "summary": "Projected massive growth in data center infrastructure establishes the computational backbone required for AI-driven efficiency, which will eventually drive down operational costs across energy and logistics.",
+            "relevance_score": 8,
+            "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1Ob0Utc3NVZi01RkVoZGZWZHVDWUxidm9PakppX1B3eWFNal90c0JTRmZlRVNhWjZ3dmVveDZFMjlHc1RLZWVlRDhPaVV2RjQwazhJSVNfWjdHR24yb1FtWnZQc0Z4anFTalFQVw?oc=5"
+        }
+    ]
+}

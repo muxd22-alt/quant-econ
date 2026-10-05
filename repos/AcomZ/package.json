@@ -1,0 +1,20 @@
+{
+  "name": "startup-monorepo",
+  "private": true,
+  "workspaces": [
+    "startup_main",
+    "chat_app",
+    "riyadh_app",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "turbo run build && node copy-dists.js",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md,json}\""
+  },
+  "devDependencies": {
+    "turbo": "^1.12.4",
+    "prettier": "^3.2.5"
+  }
+}

@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.env
+cookies.json
+tiktok_tracker.log
+*.csv
+!tiktok_accounts.csv
+!tiktok_results.csv

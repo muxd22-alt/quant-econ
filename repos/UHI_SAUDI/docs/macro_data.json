@@ -1,0 +1,52 @@
+{
+    "metadata": {
+        "source": "World Bank Free API (api.worldbank.org/v2/country/SAU)",
+        "description": "Live indicator snapshot + fixed model calibration for the Saudi Arabia Autonomous Economy Simulator.",
+        "fetched_at": "2026-10-05T08:13:06Z",
+        "country": "SAU",
+        "partial": false
+    },
+    "indicators": {
+        "population_total": {
+            "indicator": "SP.POP.TOTL",
+            "value": 36973555,
+            "year": "2025",
+            "source": "World Bank API"
+        },
+        "gdp_usd": {
+            "indicator": "NY.GDP.MKTP.CD",
+            "value": 1276942933333.33,
+            "year": "2025",
+            "source": "World Bank API"
+        },
+        "gdp_per_capita_usd": {
+            "indicator": "NY.GDP.PCAP.CD",
+            "value": 34536.6555456551,
+            "year": "2025",
+            "source": "World Bank API"
+        },
+        "gdp_growth_annual_percent": {
+            "indicator": "NY.GDP.MKTP.KD.ZG",
+            "value": 4.50246560191663,
+            "year": "2025",
+            "source": "World Bank API"
+        },
+        "labor_force_participation_rate": {
+            "indicator": "SL.TLF.CACT.ZS",
+            "value": 65.098,
+            "year": "2025",
+            "source": "World Bank API"
+        }
+    },
+    "calibration": {
+        "base_year": 2025,
+        "gdp_baseline_usd": 1108000000000,
+        "households": 4000000,
+        "median_household_income_usd": 48000,
+        "pif_aum_usd": 925000000000,
+        "sar_per_usd": 3.75,
+        "vat_rate_percent": 15.0,
+        "zakat_rate_percent": 2.5,
+        "notes": "Calibration constants are intentionally decoupled from the live indicator feed so scenario results stay comparable across data refreshes. Edited by hand only; scripts/fetch_worldbank.py preserves this block."
+    }
+}

@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-04",
+  "generatedAt": "2026-10-04T10:54:02.542Z",
+  "model": "typesafe/jev-router",
+  "usedFallback": false,
+  "ms": 3362,
+  "errors": [],
+  "brief": "Eighth straight BOOK FLIGHT (ESTIMATE) — trip readiness holds 85/100 READY, fares flat since 2026-09-28, FX 1.792021 CNY/SAR only -0.03% off its 9-pt average (NEUTRAL). Core plan lands 29,836 SAR against the 45,000 deployable ceiling: 15,164 SAR headroom, 5,000 reserve intact, 0 of 43 targets crossed — closest is the 2TB PCIe 4.0 NVMe pair at +5.1%. Nothing in the numbers argues for waiting; the binding constraint is now execution, not price. Checklist sits at 0/12, so the flight is the last cheap decision left. Europe GPU prices up 41% (Nvidia) / 28% (AMD) — a mild tailwind for buying the optional 3090 (P3) and 3060 anti-cheat box in China rather than deferring.",
+  "keyMoves": [
+    "Book the flight today — verdict unchanged for 8 sessions and fares are flat, so delay buys nothing",
+    "Start the three checklist items that gate everything else: visa/entry, Xianyu account + payment, freight forwarder contact",
+    "Keep the 2TB PCIe 4.0 NVMe pair on watch — +5.1% over target is the only near-crossing line"
+  ],
+  "watch": "Whether the 2TB PCIe 4.0 NVMe pair crosses target, and whether EU GPU price pressure leaks into Xianyu 3090/3060 asking prices."
+}

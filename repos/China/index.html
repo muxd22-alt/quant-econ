@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#f5f5f7">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000000">
+<title>China Buy-Plan Dashboard</title>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark">CN</span>
+    <div>
+      <h1>China Buy-Plan Dashboard</h1>
+      <p class="sub" id="metaLine">loading…</p>
+    </div>
+  </div>
+  <div class="topbar-right">
+    <span class="pill live" id="refreshPill">daily refresh via GitHub Actions</span>
+  </div>
+</header>
+
+<nav class="jumpnav" aria-label="Sections">
+  <a href="#sec-call">Today</a>
+  <a href="#sec-money">Money</a>
+  <a href="#sec-stack">Stack</a>
+  <a href="#sec-buy">Buy</a>
+  <a href="#sec-trip">Trip</a>
+  <a href="#sec-news">News</a>
+</nav>
+
+<main>
+
+  <!-- ============ 01 · TODAY ============ -->
+  <section class="panel hero" id="sec-call" aria-label="Today's call">
+    <div class="hero-grid">
+      <div class="hero-main">
+        <div class="panel-head">
+          <span class="kicker"><i>01</i> Today's Call</span>
+          <span class="hint" id="callStamp"></span>
+        </div>
+        <div class="call-layout">
+          <div class="verdict-side">
+            <div class="verdict-badge" id="verdictBadge">—</div>
+            <span class="badge" id="confBadge"></span>
+            <div class="recent-strip" id="recentStrip"></div>
+          </div>
+          <div class="reason-side">
+            <p class="reason" id="callReason"></p>
+            <p class="changed" id="changedLine"></p>
+          </div>
+        </div>
+        <div class="brief-box" id="briefBox" hidden>
+          <div class="brief-head">
+            <span class="brief-title">Daily Brief</span>
+            <span class="pill" id="briefModel"></span>
+          </div>
+          <p class="brief-text" id="briefText"></p>
+          <ul class="brief-moves" id="briefMoves"></ul>
+          <p class="brief-watch" id="briefWatch"></p>
+        </div>
+      </div>
+      <aside class="hero-side" aria-label="Crossed thresholds">
+        <div class="side-head">
+          <span class="side-title">Crossed Thresholds</span>
+          <span class="hint" id="crossedMeta"></span>
+        </div>
+        <div class="grid crossed-grid" id="crossedGrid"></div>
+      </aside>
+    </div>
+    <div class="signals">
+      <div class="block-head">
+        <h3>Smart Calls</h3>
+        <span class="pill" id="tipPill">tip of the day</span>
+      </div>
+      <div class="calls" id="calls"></div>
+    </div>
+  </section>
+
+  <!-- ============ 02 · MONEY ============ -->
+  <section class="panel" id="sec-money" aria-label="Money">
+    <div class="panel-head">
+      <span class="kicker"><i>02</i> Money</span>
+      <span class="hint">live dual-source FX · budgets vs landed cost · price history</span>
+    </div>
+
+    <div class="grid fx-grid" id="fxSection" aria-label="Exchange rates"></div>
+
+    <div class="block">
+      <div class="block-head">
+        <h3>Budget vs Landed Cost</h3>
+        <div class="tier-switch" id="tierSwitch" role="tablist"></div>
+      </div>
+      <div class="grid budget-grid" id="budgetGrid"></div>
+      <p class="hint" id="budgetHint"></p>
+    </div>
+
+    <details class="fold">
+      <summary>Price history &amp; tracked edits</summary>
+      <div class="block">
+        <div class="block-head"><div class="tier-switch" id="histRange" role="tablist"></div></div>
+        <div class="grid hist-grid" id="histGrid"></div>
+        <div class="edits" id="priceEdits"></div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ 03 · STACK ============ -->
+  <section class="panel stack" id="sec-stack" aria-label="The stack">
+    <div class="panel-head">
+      <span class="kicker"><i>03</i> The Stack · central home lab</span>
+      <span class="hint">one rack replaces every mini-PC · full package in <code>homelab.md</code></span>
+    </div>
+
+    <div class="rack">
+      <div class="rack-bar net">
+        <span class="node-tag">backbone</span>
+        <b>10GbE SFP+ switch · TP-Link TL-ST1008F ×8</b>
+        <span class="mono">inference RPC (KV/tensor) + PXE multicast + NAS · 1.1 GB/s — not optional</span>
+      </div>
+      <div class="rack-grid">
+        <div class="node n-core">
+          <span class="node-tag">core · NAS + virtualization</span>
+          <b>Ryzen 5 5700G · B550 · 128GB DDR4</b>
+          <ul class="mono">
+            <li>Plumbing only: Proxmox · ZFS · PXE/DHCP · HA</li>
+            <li>Jellyfin (iGPU VAAPI) · AdGuard · cameras · dashboard</li>
+            <li>3×2TB NVMe (VM/models · games · KV scratch)</li>
+            <li>8TB×2 mirror media · 8TB×2 mirror backups = 16TB usable</li>
+            <li>+ bare-metal 3060 box for kernel anti-cheat games</li>
+            <li>+ optional RTX 3090 at P3 for a full-quality Game VM</li>
+          </ul>
+        </div>
+        <div class="node n-a">
+          <span class="node-tag">node A · planner</span>
+          <b>2× AMD BC-250 · ~28GB usable</b>
+          <ul class="mono">
+            <li>14B–32B Q4 orchestrator ("helper planner") always on</li>
+            <li>llama.cpp Vulkan · UMA split + SMU governor baked in</li>
+            <li>ConnectX-3 10GbE · per-board IO carrier</li>
+          </ul>
+        </div>
+        <div class="node n-b">
+          <span class="node-tag">node B · workers + flex</span>
+          <b>4× AMD BC-250 · ~54GB usable</b>
+          <ul class="mono">
+            <li>3 boards: 4–6 parallel 7B/8B agentic tool-callers</li>
+            <li>flex board: 4th worker or Sunshine game session</li>
+            <li>llama.cpp RPC over the 10GbE link to Node A</li>
+          </ul>
+        </div>
+      </div>
+      <div class="rack-grid small">
+        <div class="node n-edge">
+          <span class="node-tag">edge</span>
+          <b>Mi Box ×2 + KB/mouse</b>
+          <span>Moonlight/Jellyfin decode at the TV — no mini-PCs anywhere</span>
+        </div>
+        <div class="node n-power">
+          <span class="node-tag">power</span>
+          <b>1+1 redundant 2000W + 2000W</b>
+          <span>6 boards on Mild ≈1.1kW 24/7 · worst case ~2.1kW (stagger) · new 850W ATX (core) · 1500VA UPS (core+net)</span>
+        </div>
+        <div class="node n-cool">
+          <span class="node-tag">cooling · rack</span>
+          <b>Delta PWM ×14 · CoolerControl</b>
+          <span>2 per board ×6 (heatsink + GDDR6) + 2 exhaust · 3D-printed shrouds seal the pressure · 12U–18U cabinet (BC-250 = 305mm)</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="answers">
+      <div class="ans"><b>10GbE switch — needed?</b><p>Yes, for <b>inference</b> first: RPC KV/tensor traffic between Node A↔B strangles at 110 MB/s on 1 GbE. Also carries PXE multicast and the NAS fabric. NICs are ¥110.</p></div>
+      <div class="ans"><b>Copy one OS to 100GB NVMe ×6?</b><p>Golden image → <b>Clonezilla SE PXE multicast</b>: install once (CachyOS + RADV + BC-250 governor), serve from the core host, flash all node drives in ~3 min/batch. Re-config = re-clone, never re-install.</p></div>
+      <div class="ans"><b>2TB + NAS storage?</b><p>3×2TB NVMe (VM/models + a dedicated game library + KV/agent scratch) + two 8TB mirror pairs: media/Jellyfin/cameras and games/backups — 16TB usable, ZFS-fault-tolerant.</p></div>
+      <div class="ans"><b>Replace the high-end core PC?</b><p>Yes — the 7900X+X670E+DDR5+3090 tower (¥10.6K) is cancelled. Heavy lifting moves to the boards (~81GB model pool, gaming + Sunshine encode); ¥3,430 of cheap AM4 does storage/VMs/PXE. The 3090 waits at optional P3.</p></div>
+      <div class="ans"><b>Why 2 + 4 boards?</b><p>Node A keeps one 14B–32B orchestrator resident (~28GB); Node B runs 3 workers (~41GB) plus a <b>flex board</b> that flips to game duty — inference never drops below 2+3 while someone plays.</p></div>
+      <div class="ans"><b>Redundancy?</b><p>Hot-swap 1+1 PSU · boards are ¥750 commodities + golden re-clone · ZFS mirrors · new ATX PSU (never used) · UPS for core+network.</p></div>
+    </div>
+
+    <div class="docs-index">
+      <span class="di-title">Where everything lives</span>
+      <code>PLAN.md</code> budgets &amp; phases · <code>homelab.md</code> the full package (sourcing, power/cooling, PXE, references) ·
+      <code>pc.md</code> architecture · <code>furnteatures.md</code> bedroom/home · <code>data/products.json</code> buy list ·
+      <code>data/config.json</code> fares, routes, tips
+    </div>
+
+    <div class="block">
+      <div class="block-head">
+        <h3>Server Route · 15K alt track</h3>
+        <span class="hint" id="routeMeta"></span>
+        <button class="fold-btn" id="routeMore" type="button">show all platforms</button>
+      </div>
+      <div class="chips" id="routeChips" role="tablist"></div>
+      <div class="route-verdict" id="routeVerdict"></div>
+      <div class="grid route-grid focus" id="routeGrid"></div>
+    </div>
+
+    <details class="fold">
+      <summary>What runs where — local model fit matrix</summary>
+      <div class="block">
+        <p class="hint" id="fitMeta"></p>
+        <div class="table-wrap">
+          <table class="fit-table" id="fitTable"></table>
+        </div>
+        <p class="hint fit-legend" id="fitLegend"></p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ 04 · BUY ============ -->
+  <section class="panel" id="sec-buy" aria-label="Buy list">
+    <div class="panel-head">
+      <span class="kicker"><i>04</i> Buy List</span>
+      <span class="hint" id="listStats"></span>
+      <span class="hint" id="judgeBadge" hidden></span>
+    </div>
+    <div class="filters" id="filters"></div>
+    <div class="buy-layout">
+      <div class="table-wrap">
+        <table id="listTable">
+          <thead>
+            <tr>
+              <th data-sort="name">Item</th>
+              <th data-sort="bundle">Bundle</th>
+              <th data-sort="priority" class="num">Pri</th>
+              <th data-sort="phase" class="num">Phase</th>
+              <th data-sort="qty" class="num">Qty</th>
+              <th data-sort="cny" class="num">CNY</th>
+              <th data-sort="target" class="num">Target</th>
+              <th data-sort="sarLine" class="num">Landed (SAR)</th>
+            </tr>
+          </thead>
+          <tbody id="listBody"></tbody>
+        </table>
+      </div>
+      <aside class="calc-panel" id="calc" aria-label="Landed-cost calculator">
+        <div class="block-head"><h3>Landed-Cost Calculator</h3></div>
+        <div class="calc">
+          <div class="calc-row">
+            <label>Item price (CNY)
+              <input type="number" id="calcCny" value="1000" min="0" step="10">
+            </label>
+            <label>Your local price (SAR, optional)
+              <input type="number" id="calcLocal" placeholder="e.g. 900" min="0" step="10">
+            </label>
+          </div>
+          <div class="calc-out" id="calcOut"></div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ============ 05 · TRIP ============ -->
+  <section class="panel" id="sec-trip" aria-label="Trip">
+    <div class="panel-head">
+      <span class="kicker"><i>05</i> Trip</span>
+      <span class="hint">FX stability + target coverage + fare movement — distinct from in-China buy phases</span>
+    </div>
+    <div class="trip-grid">
+      <div class="block">
+        <div class="block-head"><h3>Trip Readiness</h3></div>
+        <div id="readinessBox"></div>
+      </div>
+      <div class="block">
+        <div class="block-head">
+          <h3>Pre-Trip Checklist</h3>
+          <div class="check-actions">
+            <span class="hint" id="checkMeta"></span>
+            <button id="copyChecklist" type="button">Copy checklist.json</button>
+          </div>
+        </div>
+        <div id="checkListBox"></div>
+        <p class="hint" id="checkHint"></p>
+      </div>
+    </div>
+    <div class="block">
+      <div class="block-head">
+        <h3>Flights &amp; Stays <span class="est-tag">estimates</span></h3>
+        <span class="hint">fare bands are educated guesses — verify via the links</span>
+      </div>
+      <div class="grid travel-grid" id="travelGrid"></div>
+    </div>
+  </section>
+
+  <!-- ============ 06 · NEWS ============ -->
+  <section class="panel" id="sec-news" aria-label="News">
+    <div class="panel-head">
+      <span class="kicker"><i>06</i> Daily Reading</span>
+      <span class="hint" id="newsMeta"></span>
+    </div>
+    <div class="grid news-grid" id="newsGrid"></div>
+    <button class="fold-btn" id="newsMore" type="button" hidden>show more</button>
+  </section>
+
+</main>
+
+<footer class="foot" id="foot"></footer>
+
+<script src="data/dashboard.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>

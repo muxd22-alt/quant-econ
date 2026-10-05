@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>خطة الثروة التكتيكية | SAMA Tactical Wealth Planner</title>
+    <meta name="description" content="محاكي استراتيجي للقروض العقارية والشخصية والاستثمار في الأسهم وفقاً لأنظمة البنك المركزي السعودي ساما - خطة 25 سنة">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-elements">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <main class="container">
+        <!-- Hero -->
+        <header class="header" id="top">
+            <div class="logo">₿ 📊</div>
+            <h1>خطة الثروة التكتيكية</h1>
+            <p class="subtitle">محاكي استراتيجي <strong>محكم</strong> للقروض والعقار والأسهم — وفقاً لأنظمة ساما الجديدة (55% DBR)</p>
+        </header>
+
+        <!-- How it Works -->
+        <section class="how-it-works glass" id="how-it-works">
+            <h2>كيف تعمل الخطة؟</h2>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-icon">🏠</div>
+                    <h3>١. شراء العقار بالمرن</h3>
+                    <p>نأخذ أعلى تمويل عقاري ممكن بنظام <strong>المرن</strong> — القسط يبدأ منخفضاً (21.67% فقط) أول 5 سنوات ليترك مساحة للقرض الشخصي.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-icon">💳</div>
+                    <h3>٢. القرض الشخصي الأول</h3>
+                    <p>نستغل الباقي (33.33%) كقرض شخصي للزواج والتأثيث. نسبة ربحه أقل من العقاري — وهذا هو سر <strong>"إعادة التمويل الذاتي"</strong>.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-icon">📈</div>
+                    <h3>٣. استثمار شهري ثابت</h3>
+                    <p>نضخ مبلغاً ثابتاً شهرياً في محفظة أسهم. التوزيعات (2%) تُعامل كـ<strong>دخل حقيقي</strong> يُضاف لراتبك — يكبر كلما كبرت المحفظة!</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-icon">🔁</div>
+                    <h3>٤. إعادة هيكلة كل 5 سنوات</h3>
+                    <p>عند انتهاء القرض الشخصي، نسدد جزءاً من العقار من الأسهم → ينخفض القسط → نأخذ قرضاً جديداً → نستثمر الفرق. <strong>وفقاً للمادة 18 من ساما</strong>.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard -->
+        <section class="dashboard" id="dashboard">
+            <!-- Input Panel -->
+            <div class="panel input-panel glass">
+                <h2>⚙️ المدخلات المالية</h2>
+                <form id="simulator-form">
+                    <div class="input-section-title">الراتب والسلم الوظيفي</div>
+                    <!-- Salary Inputs -->
+                    <div class="input-section-title">الراتب والسلم الوظيفي</div>
+                    <div class="input-group">
+                        <label>الراتب الحالي (ريال)</label>
+                        <input type="number" id="initial-salary" value="17200" step="100" required>
+                    </div>
+                    <div class="input-group slider-group">
+                        <label>الزيادة بعد 5 سنوات: <span id="val-bump-5">1500</span> ريال</label>
+                        <input type="range" id="salary-bump-5" min="0" max="10000" step="100" value="1500">
+                    </div>
+                    <div class="input-group slider-group">
+                        <label>الزيادة بعد 10 سنوات: <span id="val-bump-10">1500</span> ريال</label>
+                        <input type="range" id="salary-bump-10" min="0" max="10000" step="100" value="1500">
+                    </div>
+
+                    <!-- Interest Rates & Support -->
+                    <div class="input-section-title">العقار والدعم</div>
+                    <div class="input-group slider-group">
+                        <label>ربح التمويل العقاري (APR): <span id="val-mortgage-apr">4.0</span>%</label>
+                        <input type="range" id="mortgage-apr" min="3.0" max="5.0" step="0.1" value="4.0">
+                    </div>
+                    <div class="input-group slider-group">
+                        <label>الدعم الحكومي / الدفعة الأولى: <span id="val-sakani">100</span> ألف ريال</label>
+                        <input type="range" id="sakani-support" min="0" max="500" step="10" value="100">
+                    </div>
+                    <div class="input-group slider-group">
+                        <label>فترة المحاكاة: <span id="val-years">25</span> سنة</label>
+                        <input type="range" id="years" min="20" max="30" step="5" value="25">
+                    </div>
+
+                    <!-- Strategy & Investment -->
+                    <div class="input-section-title">الاستثمار والأهداف</div>
+                    <div class="input-group slider-group">
+                        <label>الاستقطاع الشهري للمحفظة: <span id="val-investment">1000</span> ريال</label>
+                        <input type="range" id="monthly-investment" min="0" max="15000" step="500" value="1000">
+                    </div>
+                    <div class="input-group slider-group">
+                        <label>الهدف: التوقف عن سداد العقار عند: <span id="val-target-payoff">35</span>% من الأصل</label>
+                        <input type="range" id="target-payoff" min="0" max="100" step="5" value="35">
+                        <small class="hint">عند وصول العقار لهذه النسبة، سيتم توجيه كل القروض الاستثمارية للمحفظة.</small>
+                    </div>
+
+                    <!-- 4-Year Market Cycle Strategy -->
+                    <div class="crypto-toggle-area">
+                        <label for="crypto-toggle" class="crypto-label" id="crypto-label">
+                            <input type="checkbox" id="crypto-toggle">
+                            <span class="toggle-slider"></span>
+                            <span>📈 تفعيل استراتيجية دورة السوق والأسهم (4 سنوات)</span>
+                        </label>
+                        <small class="hint" style="color:#f59e0b;">مبنية على سيكولوجية الأسواق المتقلبة والدورات الاقتصادية لتوقيت السداد المبكر</small>
+                    </div>
+                    <div class="input-group" id="cycle-start-group" style="display:none;">
+                        <label for="cycle-start">أين نحن الآن في الدورة؟</label>
+                        <select id="cycle-start">
+                            <option value="1">سنة 1 — القاع والتجميع (Bear)</option>
+                            <option value="2">سنة 2 — التعافي (Recovery)</option>
+                            <option value="3">سنة 3 — صعود ما قبل القمة (Mid Bull)</option>
+                            <option value="4">سنة 4 — القمة والنشوة (Bull Peak)</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn-primary" id="btn-simulate">
+                        <span class="btn-text">🚀 بدء المحاكاة وتوليد الخطة</span>
+                    </button>
+                </form>
+            </div>
+
+            <!-- Summary Panel -->
+            <div class="panel summary-panel glass">
+                <h2>📊 موجز القوة الشرائية</h2>
+                <div class="summary-cards">
+                    <div class="summary-card">
+                        <h3>🏠 قيمة العقار الممكنة</h3>
+                        <div class="value highlight" id="summary-house-value">—</div>
+                        <small class="card-hint">= أعلى تمويل عقاري + دعم سكني حكومي</small>
+                    </div>
+                    <div class="summary-card">
+                        <h3>💳 القرض الشخصي الأول</h3>
+                        <div class="value" id="summary-pl-value">—</div>
+                        <small class="card-hint">للزواج والتأثيث — يُسدد خلال 5 سنوات</small>
+                    </div>
+                    <div class="summary-card">
+                        <h3>📈 إجمالي الثروة عند التقاعد</h3>
+                        <div class="value highlight-green" id="summary-wealth">—</div>
+                        <small class="card-hint">محفظة الأسهم المتراكمة بنهاية الخطة</small>
+                    </div>
+                    <div class="summary-card">
+                        <h3>💰 دخل التوزيعات الشهري (النهائي)</h3>
+                        <div class="value highlight-green" id="summary-dividend">—</div>
+                        <small class="card-hint">الراتب الإضافي الذي تحصل عليه من أسهمك</small>
+                    </div>
+                </div>
+
+                <!-- SAMA Rules Box -->
+                <div class="sama-rules">
+                    <h3>📋 ضوابط ساما المُطبقة</h3>
+                    <div class="rule-item">
+                        <span class="rule-label">الحد الأقصى للاستقطاع (DBR)</span>
+                        <span class="rule-value">55%</span>
+                    </div>
+                    <div class="rule-item">
+                        <span class="rule-label">سقف القرض الشخصي</span>
+                        <span class="rule-value">33.33%</span>
+                    </div>
+                    <div class="rule-item">
+                        <span class="rule-label">العقاري المرن (أول 5 سنوات)</span>
+                        <span class="rule-value">21.67%</span>
+                    </div>
+                    <div class="rule-item">
+                        <span class="rule-label">السداد المبكر (المادة 18)</span>
+                        <span class="rule-value">كل 5 سنوات</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Explanations & FAQ Section -->
+        <section class="explanations-section glass" id="explanations">
+            <h2>💡 شروحات وتفاصيل الاستراتيجية</h2>
+            
+            <div class="explanation-card">
+                <h3>📋 ضوابط ساما المُطبقة في الحاسبة (محدثة)</h3>
+                <p>تعتمد الحاسبة على القوانين الحالية للبنك المركزي السعودي لضمان واقعية الأرقام:</p>
+                <ul>
+                    <li><strong>نسبة الاستقطاع (DBR):</strong> الحد الأقصى لإجمالي الاستقطاع من الراتب هو <strong>55%</strong>.</li>
+                    <li><strong>القرض الشخصي:</strong> سقفه الأعلى هو <strong>33.33%</strong> (ثلث الراتب).</li>
+                    <li><strong>العقاري المرن:</strong> في أول 5 سنوات، ينخفض قسط العقار إلى <strong>21.67%</strong> فقط، ليسمح بأخذ القرض الشخصي.</li>
+                </ul>
+            </div>
+
+            <div class="explanation-card">
+                <h3>⚖️ السداد الجزئي المبكر (المادة 18)</h3>
+                <p>وفقاً لوثيقة التمويل الصادرة من ساما (المادة 18-1-1)، يحق للمستفيد السداد الجزئي المبكر <strong>مرة كل 5 سنوات كحد أدنى</strong>. وعند سداد مبلغ يعادل 6 أقساط أو أكثر، تُسقط الأرباح التراكمية عن المدة المتبقية لذلك المبلغ. خطتنا تعتمد على توفير سيولة كل 5 سنوات وتنفيذ هذا السداد لتقليص مدة القرض بشكل دراماتيكي.</p>
+            </div>
+
+            <div class="explanation-card">
+                <h3>📈 استراتيجية دورات السوق المتعاقبة (4-5 سنوات)</h3>
+                <p>الأسواق المالية (بما فيها سوق الأسهم) تتحرك في دورات اقتصادية متكررة من الصعود والهبوط. تعتمد محاكاتنا على دورة تقريبية مدتها 4 سنوات كنوع من اختبار الجهد والضغوط:</p>
+                <ul>
+                    <li><strong>أول 3 سنوات (تجميع وتعافي صاعد):</strong> يكون السوق في تدبدب وتعافي؛ وهنا يتم الشراء المكثف (DCA) وبناء وحدات المحفظة بأسعار ممتازة.</li>
+                    <li><strong>السنة الرابعة (القمة والنشوة):</strong> عند وصول السوق لتقييمات مرتفعة جداً (Peak)، يتم بيع جزء كبير من المحفظة الاستثمارية وضخ الأموال كـ <strong>سداد مبكر للعقار</strong> للاستفادة من المادة 18 وإسقاط الأرباح البنكية.</li>
+                </ul>
+                <p>هذه الاستراتيجية التكتيكية توفر مرونة هائلة وقد تنهي قرض الـ 25 سنة في وقت قياسي.</p>
+            </div>
+
+            <div class="explanation-card">
+                <h3>💰 توزيعات الأرباح كـ "دخل حقيقي"</h3>
+                <p>الحاسبة تعامل التوزيعات النقدية (مثلاً 2% سنوياً من الأسهم) كراتب إضافي. كلما نمت محفظتك، زاد "راتبك الفعلي" تلقائياً، وبالتالي ترتفع قدرتك على الاقتراض والسداد وتتسارع وتيرة تراكم الثروة بشكل أسي.</p>
+            </div>
+        </section>
+
+        <!-- Results -->
+        <section class="results-section glass hidden" id="results-section">
+            <h2>📅 الخطة التفصيلية (سنة بسنة)</h2>
+            <p class="results-subtitle">تنقل بين المراحل لمتابعة تطور وضعك المالي كل 5 سنوات</p>
+            <div id="tabs-container" class="tabs-container"></div>
+        </section>
+
+        <!-- Legend -->
+        <section class="legend glass hidden" id="legend-section">
+            <h2>📖 دليل القراءة</h2>
+            <div class="legend-grid">
+                <div class="legend-item">
+                    <span class="badge">بداية الخطة</span>
+                    <p>أول سنة — تم أخذ القرض الشخصي والتمويل العقاري</p>
+                </div>
+                <div class="legend-item">
+                    <span class="badge purple">تكتيك: إعادة جدولة</span>
+                    <p>نجحنا في سداد جزء من العقار وأخذ قرض شخصي جديد</p>
+                </div>
+                <div class="legend-item">
+                    <span class="badge purple">استثمار مكثف</span>
+                    <p>العقار منخفض بما يكفي — القرض الجديد كله يتحول لاستثمار</p>
+                </div>
+                <div class="legend-item">
+                    <span class="badge">نقص سيولة</span>
+                    <p>المحفظة لم تكفِ لإعادة الهيكلة — القسط العقاري يرتفع</p>
+                </div>
+                <div class="legend-item">
+                    <span class="badge" style="background:rgba(16,185,129,0.2); color:#10b981;">دخل توزيعات</span>
+                    <p>التوزيعات الربع سنوية من أسهمك — تُعامل كدخل شهري حقيقي</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>⚠️ الأرقام تقريبية مبنية على افتراضات مبسطة ولا تُعد استشارة مالية. راجع <a href="https://www.sama.gov.sa/" target="_blank">أنظمة ساما</a> قبل اتخاذ أي قرار.</p>
+        </footer>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>

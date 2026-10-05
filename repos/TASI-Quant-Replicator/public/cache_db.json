@@ -1,0 +1,912 @@
+{
+  "4010.SR": {
+    "Ticker": "4010.SR",
+    "Name": "4010.SR",
+    "MarketCap": NaN,
+    "PE": NaN,
+    "PB": NaN,
+    "DivYield": 0,
+    "ROE": 0,
+    "LastUpdated": "2026-10-02T09:21:43.485841"
+  },
+  "8040.SR": {
+    "Ticker": "8040.SR",
+    "Name": "Mutakamela Insurance Co.",
+    "MarketCap": 591910464,
+    "PE": NaN,
+    "PB": 0.8425777,
+    "DivYield": 0,
+    "ROE": -3.8089999999999997,
+    "LastUpdated": "2026-10-02T16:06:36.207602"
+  },
+  "8010.SR": {
+    "Ticker": "8010.SR",
+    "Name": "The Company for Cooperative Ins",
+    "MarketCap": 19402862592,
+    "PE": 19.759726,
+    "PB": 3.4207501,
+    "DivYield": 153.0,
+    "ROE": 18.535,
+    "LastUpdated": "2026-10-01T22:59:36.276598"
+  },
+  "2050.SR": {
+    "Ticker": "2050.SR",
+    "Name": "Savola Group",
+    "MarketCap": 7170802688,
+    "PE": 7.7967744,
+    "PB": 1.3474189,
+    "DivYield": 700.0,
+    "ROE": 16.775000000000002,
+    "LastUpdated": "2026-10-02T02:07:12.969498"
+  },
+  "8210.SR": {
+    "Ticker": "8210.SR",
+    "Name": "Bupa Arabia for Cooperative Ins",
+    "MarketCap": 22034999296,
+    "PE": 19.71812,
+    "PB": 3.8696587,
+    "DivYield": 271.0,
+    "ROE": 20.357999,
+    "LastUpdated": "2026-10-02T09:21:43.562122"
+  },
+  "1182.SR": {
+    "Ticker": "1182.SR",
+    "Name": "Amlak International Finance Co.",
+    "MarketCap": 848016000,
+    "PE": 11.39726,
+    "PB": 0.6647491,
+    "DivYield": 601.0,
+    "ROE": 5.8769997,
+    "LastUpdated": "2026-10-01T18:01:45.349450"
+  },
+  "2001.SR": {
+    "Ticker": "2001.SR",
+    "Name": "Methanol Chemicals Co.",
+    "MarketCap": 375000000,
+    "PE": NaN,
+    "PB": 1.8420278,
+    "DivYield": 0,
+    "ROE": -106.29299999999999,
+    "LastUpdated": "2026-10-02T16:06:36.219183"
+  },
+  "4003.SR": {
+    "Ticker": "4003.SR",
+    "Name": "United Electronics Co.",
+    "MarketCap": 4506757120,
+    "PE": 9.231379,
+    "PB": 2.6987584,
+    "DivYield": 850.0,
+    "ROE": 28.129998,
+    "LastUpdated": "2026-10-01T18:01:45.359406"
+  },
+  "4280.SR": {
+    "Ticker": "4280.SR",
+    "Name": "Kingdom Holding Co.",
+    "MarketCap": 49919819776,
+    "PE": 26.411766,
+    "PB": 0.7324234,
+    "DivYield": 208.0,
+    "ROE": 3.3570003,
+    "LastUpdated": "2026-10-02T16:06:36.179285"
+  },
+  "4170.SR": {
+    "Ticker": "4170.SR",
+    "Name": "Tourism Enterprise Co.",
+    "MarketCap": 682318784,
+    "PE": NaN,
+    "PB": 1.4252928,
+    "DivYield": 0,
+    "ROE": -3.0589999999999997,
+    "LastUpdated": "2026-10-02T02:07:12.963289"
+  },
+  "8030.SR": {
+    "Ticker": "8030.SR",
+    "Name": "The Mediterranean and Gulf Insu",
+    "MarketCap": 2102763136,
+    "PE": 21.43662,
+    "PB": 1.269603,
+    "DivYield": 0,
+    "ROE": 7.637,
+    "LastUpdated": "2026-10-02T16:06:36.188441"
+  },
+  "4260.SR": {
+    "Ticker": "4260.SR",
+    "Name": "United International Transporta",
+    "MarketCap": 2885365504,
+    "PE": 9.419795,
+    "PB": 0.9644617,
+    "DivYield": 454.0,
+    "ROE": 10.3590004,
+    "LastUpdated": "2026-10-02T02:07:12.960959"
+  },
+  "4071.SR": {
+    "Ticker": "4071.SR",
+    "Name": "Arabian Contracting Services Co",
+    "MarketCap": 2520100096,
+    "PE": NaN,
+    "PB": 1.8744886,
+    "DivYield": 0,
+    "ROE": -10.632,
+    "LastUpdated": "2026-10-02T21:09:27.012898"
+  },
+  "4180.SR": {
+    "Ticker": "4180.SR",
+    "Name": "Fitaihi Holding Group",
+    "MarketCap": 602249984,
+    "PE": 219.00002,
+    "PB": 1.2867215,
+    "DivYield": 112.99999999999999,
+    "ROE": 0.17099999999999999,
+    "LastUpdated": "2026-09-29T11:05:38.948370"
+  },
+  "4310.SR": {
+    "Ticker": "4310.SR",
+    "Name": "Knowledge Economic City",
+    "MarketCap": 7125300224,
+    "PE": NaN,
+    "PB": 2.4370432,
+    "DivYield": 0,
+    "ROE": -0.377,
+    "LastUpdated": "2026-10-02T09:21:43.519652"
+  },
+  "2280.SR": {
+    "Ticker": "2280.SR",
+    "Name": "Almarai Co.",
+    "MarketCap": 41747632128,
+    "PE": 17.142857,
+    "PB": 2.0156453,
+    "DivYield": 274.0,
+    "ROE": 12.235,
+    "LastUpdated": "2026-10-03T06:02:59.579104"
+  },
+  "3080.SR": {
+    "Ticker": "3080.SR",
+    "Name": "Eastern Province Cement Co.",
+    "MarketCap": 2003799936,
+    "PE": 9.209486,
+    "PB": 0.81462836,
+    "DivYield": 505.0,
+    "ROE": 9.165,
+    "LastUpdated": "2026-09-29T17:38:45.670943"
+  },
+  "4130.SR": {
+    "Ticker": "4130.SR",
+    "Name": "Saudi Darb Investment Co.",
+    "MarketCap": 427858240,
+    "PE": 65.333336,
+    "PB": 1.836926,
+    "DivYield": 0,
+    "ROE": 3.0700000000000003,
+    "LastUpdated": "2026-10-03T06:02:59.567495"
+  },
+  "2250.SR": {
+    "Ticker": "2250.SR",
+    "Name": "Saudi Industrial Investment Gro",
+    "MarketCap": 7791570944,
+    "PE": 127.44444,
+    "PB": 0.8726415,
+    "DivYield": 8936.0,
+    "ROE": 0.56800004,
+    "LastUpdated": "2026-10-03T00:55:50.393647"
+  },
+  "4290.SR": {
+    "Ticker": "4290.SR",
+    "Name": "Alkhaleej Training and Educatio",
+    "MarketCap": 794300032,
+    "PE": 101.833336,
+    "PB": 1.5133128,
+    "DivYield": 0,
+    "ROE": 2.7780002,
+    "LastUpdated": "2026-10-02T21:09:27.014196"
+  },
+  "3090.SR": {
+    "Ticker": "3090.SR",
+    "Name": "Tabuk Cement Co.",
+    "MarketCap": 631800000,
+    "PE": 43.875,
+    "PB": 0.5596747,
+    "DivYield": 677.0,
+    "ROE": 1.2710000000000001,
+    "LastUpdated": "2026-09-29T11:05:38.909446"
+  },
+  "4320.SR": {
+    "Ticker": "4320.SR",
+    "Name": "Alandalus Property Co.",
+    "MarketCap": 1306666752,
+    "PE": 280.0,
+    "PB": 1.3559322,
+    "DivYield": 332.0,
+    "ROE": 1.646,
+    "LastUpdated": "2026-09-29T17:38:45.641836"
+  },
+  "5110.SR": {
+    "Ticker": "5110.SR",
+    "Name": "Saudi Energy Co.",
+    "MarketCap": 64457207808,
+    "PE": 14.875001,
+    "PB": 0.7697666,
+    "DivYield": 449.0,
+    "ROE": 5.1979999999999995,
+    "LastUpdated": "2026-10-02T09:21:43.493002"
+  },
+  "2222.SR": {
+    "Ticker": "2222.SR",
+    "Name": "Saudi Arabian Oil Co.",
+    "MarketCap": 6115419488256,
+    "PE": 14.95858,
+    "PB": 3.9145246,
+    "DivYield": 537.0,
+    "ROE": 23.747998,
+    "LastUpdated": "2026-10-02T21:09:26.981034"
+  },
+  "4240.SR": {
+    "Ticker": "4240.SR",
+    "Name": "AFG International Co.",
+    "MarketCap": 1653784448,
+    "PE": NaN,
+    "PB": -0.95228654,
+    "DivYield": 0,
+    "ROE": 0,
+    "LastUpdated": "2026-10-03T00:55:50.339671"
+  },
+  "2220.SR": {
+    "Ticker": "2220.SR",
+    "Name": "National Metal Manufacturing an",
+    "MarketCap": 361080000,
+    "PE": NaN,
+    "PB": 1.65692,
+    "DivYield": 0,
+    "ROE": -9.2539996,
+    "LastUpdated": "2026-10-03T00:55:50.408385"
+  },
+  "4030.SR": {
+    "Ticker": "4030.SR",
+    "Name": "National Shipping Company of Sa",
+    "MarketCap": 32835061760,
+    "PE": 5.1416187,
+    "PB": 1.72752,
+    "DivYield": 281.0,
+    "ROE": 38.24,
+    "LastUpdated": "2026-10-03T00:55:50.391252"
+  },
+  "4005.SR": {
+    "Ticker": "4005.SR",
+    "Name": "National Medical Care Co.",
+    "MarketCap": 4553911296,
+    "PE": 15.1636915,
+    "PB": 2.4445243,
+    "DivYield": 294.0,
+    "ROE": 16.792,
+    "LastUpdated": "2026-10-02T21:09:27.000696"
+  },
+  "4061.SR": {
+    "Ticker": "4061.SR",
+    "Name": "Anaam International Holding Gro",
+    "MarketCap": 370124992,
+    "PE": NaN,
+    "PB": 1.5147609,
+    "DivYield": 0,
+    "ROE": -5.3069999999999995,
+    "LastUpdated": "2026-09-29T21:52:30.446402"
+  },
+  "4250.SR": {
+    "Ticker": "4250.SR",
+    "Name": "Jabal Omar Development Co.",
+    "MarketCap": 20473399296,
+    "PE": 11.644296,
+    "PB": 1.3253381,
+    "DivYield": 0,
+    "ROE": 11.5609996,
+    "LastUpdated": "2026-09-29T17:38:45.660369"
+  },
+  "2080.SR": {
+    "Ticker": "2080.SR",
+    "Name": "National Gas and Industrializat",
+    "MarketCap": 4368750080,
+    "PE": 15.9153,
+    "PB": 2.0300412,
+    "DivYield": 515.0,
+    "ROE": 13.219,
+    "LastUpdated": "2026-10-03T06:02:59.595502"
+  },
+  "1080.SR": {
+    "Ticker": "1080.SR",
+    "Name": "Arab National Bank",
+    "MarketCap": 45337399296,
+    "PE": 8.618868,
+    "PB": 1.0581913,
+    "DivYield": 570.0,
+    "ROE": 11.023,
+    "LastUpdated": "2026-09-29T17:38:45.615507"
+  },
+  "4270.SR": {
+    "Ticker": "4270.SR",
+    "Name": "Saudi Printing and Packaging Co",
+    "MarketCap": 462920000,
+    "PE": NaN,
+    "PB": 12.4561405,
+    "DivYield": 0,
+    "ROE": -175.101,
+    "LastUpdated": "2026-09-29T11:05:38.939240"
+  },
+  "4007.SR": {
+    "Ticker": "4007.SR",
+    "Name": "Al Hammadi Holding",
+    "MarketCap": 3596800000,
+    "PE": 15.39726,
+    "PB": 1.7404768,
+    "DivYield": 474.0,
+    "ROE": 11.549,
+    "LastUpdated": "2026-09-29T21:52:30.392500"
+  },
+  "3030.SR": {
+    "Ticker": "3030.SR",
+    "Name": "Saudi Cement Co.",
+    "MarketCap": 4060620032,
+    "PE": 11.198313,
+    "PB": 1.8916608,
+    "DivYield": 661.0,
+    "ROE": 17.2,
+    "LastUpdated": "2026-09-29T17:38:45.644263"
+  },
+  "1010.SR": {
+    "Ticker": "1010.SR",
+    "Name": "Riyad Bank",
+    "MarketCap": 79826739200,
+    "PE": 8.016001,
+    "PB": 1.1839074,
+    "DivYield": 525.0,
+    "ROE": 13.875000000000002,
+    "LastUpdated": "2026-09-29T21:52:30.393340"
+  },
+  "2030.SR": {
+    "Ticker": "2030.SR",
+    "Name": "Saudi Arabia Refineries Co.",
+    "MarketCap": 777000000,
+    "PE": NaN,
+    "PB": 2.79155,
+    "DivYield": 0,
+    "ROE": -13.859001000000001,
+    "LastUpdated": "2026-09-29T11:05:39.025752"
+  },
+  "4090.SR": {
+    "Ticker": "4090.SR",
+    "Name": "Taiba Investments Co.",
+    "MarketCap": 9024999424,
+    "PE": 25.069443,
+    "PB": 1.3027787,
+    "DivYield": 185.0,
+    "ROE": 4.6329997,
+    "LastUpdated": "2026-09-30T07:58:53.413587"
+  },
+  "4002.SR": {
+    "Ticker": "4002.SR",
+    "Name": "Mouwasat Medical Services Co.",
+    "MarketCap": 12540000256,
+    "PE": 14.752941,
+    "PB": 3.1623545,
+    "DivYield": 658.0,
+    "ROE": 22.576999999999998,
+    "LastUpdated": "2026-10-03T06:02:59.585451"
+  },
+  "8012.SR": {
+    "Ticker": "8012.SR",
+    "Name": "Aljazira Takaful Taawuni Co.",
+    "MarketCap": 667259968,
+    "PE": 34.86207,
+    "PB": 0.68039566,
+    "DivYield": 388.0,
+    "ROE": 2.016,
+    "LastUpdated": "2026-09-30T01:04:11.149298"
+  },
+  "1180.SR": {
+    "Ticker": "1180.SR",
+    "Name": "The Saudi National Bank",
+    "MarketCap": 238824407040,
+    "PE": 9.603819,
+    "PB": 1.2491851,
+    "DivYield": 568.0,
+    "ROE": 12.561,
+    "LastUpdated": "2026-09-30T07:58:53.418184"
+  },
+  "2140.SR": {
+    "Ticker": "2140.SR",
+    "Name": "AYYAN Investment Co.",
+    "MarketCap": 857421568,
+    "PE": 13.741936,
+    "PB": 0.9975413,
+    "DivYield": 0,
+    "ROE": -12.167,
+    "LastUpdated": "2026-09-29T21:52:30.390722"
+  },
+  "3010.SR": {
+    "Ticker": "3010.SR",
+    "Name": "Arabian Cement Co.",
+    "MarketCap": 2000000000,
+    "PE": 9.803922,
+    "PB": 0.7806401,
+    "DivYield": 739.0,
+    "ROE": 7.994,
+    "LastUpdated": "2026-09-30T01:04:11.158939"
+  },
+  "3040.SR": {
+    "Ticker": "3040.SR",
+    "Name": "Qassim Cement Co.",
+    "MarketCap": 4757026304,
+    "PE": 20.540285,
+    "PB": 1.8277665,
+    "DivYield": 734.0,
+    "ROE": 8.663999,
+    "LastUpdated": "2026-09-29T11:05:39.003143"
+  },
+  "1211.SR": {
+    "Ticker": "1211.SR",
+    "Name": "Saudi Arabian Mining Co.",
+    "MarketCap": 237177995264,
+    "PE": 26.11111,
+    "PB": 3.6362555,
+    "DivYield": 0,
+    "ROE": 12.613,
+    "LastUpdated": "2026-09-25T16:33:18.065429"
+  },
+  "4322.SR": {
+    "Ticker": "4322.SR",
+    "Name": "Retal Urban Development co.",
+    "MarketCap": 4241826560,
+    "PE": 21.25,
+    "PB": 4.0075436,
+    "DivYield": 244.0,
+    "ROE": 23.153000000000002,
+    "LastUpdated": "2026-09-30T23:28:32.624448"
+  },
+  "2083.SR": {
+    "Ticker": "2083.SR",
+    "Name": "The Power and Water Utility Com",
+    "MarketCap": 10085000192,
+    "PE": 33.33884,
+    "PB": 1.9226003,
+    "DivYield": 432.0,
+    "ROE": 5.6799997,
+    "LastUpdated": "2026-09-29T21:52:30.380423"
+  },
+  "4321.SR": {
+    "Ticker": "4321.SR",
+    "Name": "Arabian Centres Co.",
+    "MarketCap": 7255365120,
+    "PE": 6.211454,
+    "PB": 0.45070964,
+    "DivYield": 988.0000000000001,
+    "ROE": 7.481999999999999,
+    "LastUpdated": "2026-09-30T14:50:21.432290"
+  },
+  "1140.SR": {
+    "Ticker": "1140.SR",
+    "Name": "Bank Albilad",
+    "MarketCap": 36135002112,
+    "PE": 12.166667,
+    "PB": 1.6714077,
+    "DivYield": 409.99999999999994,
+    "ROE": 13.972001,
+    "LastUpdated": "2026-09-30T07:58:53.412886"
+  },
+  "1020.SR": {
+    "Ticker": "1020.SR",
+    "Name": "Bank Aljazira",
+    "MarketCap": 14696308736,
+    "PE": 11.405941,
+    "PB": 0.9681486,
+    "DivYield": 860.0,
+    "ROE": 7.579,
+    "LastUpdated": "2026-09-30T14:50:21.429330"
+  },
+  "4100.SR": {
+    "Ticker": "4100.SR",
+    "Name": "Makkah Construction and Develop",
+    "MarketCap": 15439998976,
+    "PE": 30.03891,
+    "PB": 3.967316,
+    "DivYield": 194.0,
+    "ROE": 12.926000000000002,
+    "LastUpdated": "2026-09-30T01:04:11.154026"
+  },
+  "7010.SR": {
+    "Ticker": "7010.SR",
+    "Name": "Saudi Telecom Co.",
+    "MarketCap": 213463941120,
+    "PE": 14.501695,
+    "PB": 2.5133657,
+    "DivYield": 509.99999999999994,
+    "ROE": 17.392,
+    "LastUpdated": "2026-09-30T01:04:11.174993"
+  },
+  "3050.SR": {
+    "Ticker": "3050.SR",
+    "Name": "Southern Province Cement Co.",
+    "MarketCap": 2468199936,
+    "PE": NaN,
+    "PB": 0.8090125,
+    "DivYield": 284.0,
+    "ROE": -1.4839999,
+    "LastUpdated": "2026-10-01T11:22:19.831987"
+  },
+  "1183.SR": {
+    "Ticker": "1183.SR",
+    "Name": "SHL Finance Co.",
+    "MarketCap": 1322999936,
+    "PE": 22.05,
+    "PB": 0.76802504,
+    "DivYield": 371.0,
+    "ROE": 3.4930002,
+    "LastUpdated": "2026-09-30T01:04:11.138938"
+  },
+  "4190.SR": {
+    "Ticker": "4190.SR",
+    "Name": "Jarir Marketing Co.",
+    "MarketCap": 19116001280,
+    "PE": 17.129032,
+    "PB": 11.3380785,
+    "DivYield": 498.00000000000006,
+    "ROE": 67.24799999999999,
+    "LastUpdated": "2026-09-30T14:50:21.459646"
+  },
+  "4001.SR": {
+    "Ticker": "4001.SR",
+    "Name": "Abdullah Al Othaim Markets Co.",
+    "MarketCap": 3815999744,
+    "PE": 47.111107,
+    "PB": 3.5570467,
+    "DivYield": 826.0,
+    "ROE": 7.4910000000000005,
+    "LastUpdated": "2026-09-30T07:58:53.414126"
+  },
+  "2020.SR": {
+    "Ticker": "2020.SR",
+    "Name": "SABIC Agri-Nutrients Co.",
+    "MarketCap": 56886231040,
+    "PE": 14.6446085,
+    "PB": 2.6843073,
+    "DivYield": 571.0,
+    "ROE": 18.299000000000003,
+    "LastUpdated": "2026-09-30T07:58:53.415395"
+  },
+  "4300.SR": {
+    "Ticker": "4300.SR",
+    "Name": "Dar Alarkan Real Estate Develop",
+    "MarketCap": 20271599616,
+    "PE": 17.063637,
+    "PB": 0.8926194,
+    "DivYield": 0,
+    "ROE": 5.356000000000001,
+    "LastUpdated": "2026-10-01T04:12:14.759123"
+  },
+  "4020.SR": {
+    "Ticker": "4020.SR",
+    "Name": "Saudi Real Estate Co.",
+    "MarketCap": 5591249920,
+    "PE": 8.668605,
+    "PB": 0.9491978,
+    "DivYield": 0,
+    "ROE": 13.297,
+    "LastUpdated": "2026-09-30T14:50:21.438981"
+  },
+  "1060.SR": {
+    "Ticker": "1060.SR",
+    "Name": "Saudi Awwal Bank",
+    "MarketCap": 68465750016,
+    "PE": 8.722513,
+    "PB": 0.9996399,
+    "DivYield": 602.0,
+    "ROE": 11.079001,
+    "LastUpdated": "2026-09-30T19:49:50.935899"
+  },
+  "2010.SR": {
+    "Ticker": "2010.SR",
+    "Name": "Saudi Basic Industries Corp.",
+    "MarketCap": 138180001792,
+    "PE": NaN,
+    "PB": 1.1185857,
+    "DivYield": 474.0,
+    "ROE": -0.11399999999999999,
+    "LastUpdated": "2026-09-30T14:50:21.427816"
+  },
+  "7030.SR": {
+    "Ticker": "7030.SR",
+    "Name": "Mobile Telecommunication Compan",
+    "MarketCap": 8780583936,
+    "PE": 11.102273,
+    "PB": 0.811125,
+    "DivYield": 504.0,
+    "ROE": 7.384,
+    "LastUpdated": "2026-09-30T19:49:50.955660"
+  },
+  "4031.SR": {
+    "Ticker": "4031.SR",
+    "Name": "Saudi Ground Services Co.",
+    "MarketCap": 4183000064,
+    "PE": 19.866072,
+    "PB": 1.6123189,
+    "DivYield": 441.0,
+    "ROE": 8.246,
+    "LastUpdated": "2026-09-30T23:28:32.605581"
+  },
+  "4050.SR": {
+    "Ticker": "4050.SR",
+    "Name": "Saudi Automotive Services Co.",
+    "MarketCap": 2814000128,
+    "PE": 44.666668,
+    "PB": 3.063324,
+    "DivYield": 0,
+    "ROE": 6.296,
+    "LastUpdated": "2026-09-30T19:49:51.167964"
+  },
+  "2060.SR": {
+    "Ticker": "2060.SR",
+    "Name": "National Industrialization Co.",
+    "MarketCap": 5217529344,
+    "PE": NaN,
+    "PB": 0.74971163,
+    "DivYield": 0,
+    "ROE": -40.919,
+    "LastUpdated": "2026-09-30T23:28:32.606299"
+  },
+  "2040.SR": {
+    "Ticker": "2040.SR",
+    "Name": "Saudi Ceramic Co.",
+    "MarketCap": 2161062400,
+    "PE": 24.08889,
+    "PB": 1.3980783,
+    "DivYield": 454.0,
+    "ROE": 5.766,
+    "LastUpdated": "2026-09-30T19:49:51.007413"
+  },
+  "1120.SR": {
+    "Ticker": "1120.SR",
+    "Name": "Al Rajhi Bank",
+    "MarketCap": 379799994368,
+    "PE": 15.216347,
+    "PB": 3.1473746,
+    "DivYield": 398.0,
+    "ROE": 18.521,
+    "LastUpdated": "2026-09-30T23:28:32.631251"
+  },
+  "4160.SR": {
+    "Ticker": "4160.SR",
+    "Name": "Thimar Development Holding Co.",
+    "MarketCap": 204880000,
+    "PE": NaN,
+    "PB": 39.252804,
+    "DivYield": 0,
+    "ROE": -94.044995,
+    "LastUpdated": "2026-10-01T04:12:14.798092"
+  },
+  "4080.SR": {
+    "Ticker": "4080.SR",
+    "Name": "Sinad Holding Co.",
+    "MarketCap": 1011111104,
+    "PE": NaN,
+    "PB": 0.9882643,
+    "DivYield": 0,
+    "ROE": 2.036,
+    "LastUpdated": "2026-10-01T18:01:45.342217"
+  },
+  "1111.SR": {
+    "Ticker": "1111.SR",
+    "Name": "Saudi Tadawul Group Holding Co.",
+    "MarketCap": 13968000000,
+    "PE": 42.794117,
+    "PB": 4.2199907,
+    "DivYield": 195.0,
+    "ROE": 9.9,
+    "LastUpdated": "2026-10-01T04:12:14.796166"
+  },
+  "4040.SR": {
+    "Ticker": "4040.SR",
+    "Name": "Saudi Public Transport Co.",
+    "MarketCap": 1331249920,
+    "PE": 11.210526,
+    "PB": 1.2704282,
+    "DivYield": 0,
+    "ROE": 17.652,
+    "LastUpdated": "2026-10-01T18:01:45.332429"
+  },
+  "4110.SR": {
+    "Ticker": "4110.SR",
+    "Name": "Batic Investments and Logistics",
+    "MarketCap": 1086000000,
+    "PE": NaN,
+    "PB": 2.4965515,
+    "DivYield": 0,
+    "ROE": 6.565,
+    "LastUpdated": "2026-10-01T18:01:45.304870"
+  },
+  "4140.SR": {
+    "Ticker": "4140.SR",
+    "Name": "Saudi Industrial Export Co.",
+    "MarketCap": 433512000,
+    "PE": NaN,
+    "PB": 4.4158416,
+    "DivYield": 0,
+    "ROE": -19.06,
+    "LastUpdated": "2026-09-30T19:49:51.017659"
+  },
+  "4220.SR": {
+    "Ticker": "4220.SR",
+    "Name": "Emaar The Economic City",
+    "MarketCap": 8237735936,
+    "PE": 58.3125,
+    "PB": 0.90741104,
+    "DivYield": 0,
+    "ROE": 0.067000004,
+    "LastUpdated": "2026-10-01T11:22:19.872190"
+  },
+  "2070.SR": {
+    "Ticker": "2070.SR",
+    "Name": "Saudi Pharmaceutical Industries",
+    "MarketCap": 3702392064,
+    "PE": 17.329609,
+    "PB": 2.192846,
+    "DivYield": 112.99999999999999,
+    "ROE": 12.747,
+    "LastUpdated": "2026-10-01T11:22:19.946099"
+  },
+  "7020.SR": {
+    "Ticker": "7020.SR",
+    "Name": "Etihad Etisalat Co.",
+    "MarketCap": 49081626624,
+    "PE": 13.463158,
+    "PB": 2.3516216,
+    "DivYield": 469.00000000000006,
+    "ROE": 18.108,
+    "LastUpdated": "2026-10-02T16:06:36.162495"
+  },
+  "1150.SR": {
+    "Ticker": "1150.SR",
+    "Name": "Alinma Bank",
+    "MarketCap": 72779997184,
+    "PE": 12.190955,
+    "PB": 1.9067831,
+    "DivYield": 411.00000000000006,
+    "ROE": 13.888,
+    "LastUpdated": "2026-10-01T22:59:36.220806"
+  },
+  "2081.SR": {
+    "Ticker": "2081.SR",
+    "Name": "Alkhorayef Water and Power Tech",
+    "MarketCap": 3190249984,
+    "PE": 12.072847,
+    "PB": 3.003295,
+    "DivYield": 193.0,
+    "ROE": 27.988002,
+    "LastUpdated": "2026-09-30T23:28:32.609135"
+  },
+  "1030.SR": {
+    "Ticker": "1030.SR",
+    "Name": "Saudi Investment Bank",
+    "MarketCap": 18135742464,
+    "PE": 8.552941,
+    "PB": 1.0268362,
+    "DivYield": 548.0,
+    "ROE": 10.705,
+    "LastUpdated": "2026-10-01T04:12:14.790801"
+  },
+  "2090.SR": {
+    "Ticker": "2090.SR",
+    "Name": "National Gypsum Co.",
+    "MarketCap": 350233376,
+    "PE": NaN,
+    "PB": 0.6294463,
+    "DivYield": 0,
+    "ROE": 0,
+    "LastUpdated": "2026-10-02T09:21:43.573405"
+  },
+  "4011.SR": {
+    "Ticker": "4011.SR",
+    "Name": "Lazurde Company for Jewelry",
+    "MarketCap": 557750016,
+    "PE": NaN,
+    "PB": 2.3144834,
+    "DivYield": 0,
+    "ROE": -12.269,
+    "LastUpdated": "2026-10-01T11:22:19.851071"
+  },
+  "4150.SR": {
+    "Ticker": "4150.SR",
+    "Name": "Arriyadh Development Co.",
+    "MarketCap": 3836465408,
+    "PE": 12.8125,
+    "PB": 0.9183559,
+    "DivYield": 303.0,
+    "ROE": 7.272,
+    "LastUpdated": "2026-10-02T02:07:12.974218"
+  },
+  "4015.SR": {
+    "Ticker": "4015.SR",
+    "Name": "Jamjoom Pharmaceuticals Factory",
+    "MarketCap": 8876000256,
+    "PE": 18.45706,
+    "PB": 4.725701,
+    "DivYield": 333.0,
+    "ROE": 26.999000000000002,
+    "LastUpdated": "2026-10-01T22:59:36.242722"
+  },
+  "4004.SR": {
+    "Ticker": "4004.SR",
+    "Name": "Dallah Healthcare Co.",
+    "MarketCap": 9196578816,
+    "PE": 20.84254,
+    "PB": 2.2097585,
+    "DivYield": 225.0,
+    "ROE": 10.306999999999999,
+    "LastUpdated": "2026-10-01T04:12:14.790339"
+  },
+  "2082.SR": {
+    "Ticker": "2082.SR",
+    "Name": "ACWA POWER Co.",
+    "MarketCap": 125257310208,
+    "PE": 77.85715,
+    "PB": 8.342689,
+    "DivYield": 27.0,
+    "ROE": 5.9949997999999995,
+    "LastUpdated": "2026-10-02T02:07:12.952563"
+  },
+  "2110.SR": {
+    "Ticker": "2110.SR",
+    "Name": "Saudi Cable Co.",
+    "MarketCap": 1201790464,
+    "PE": 7.366053,
+    "PB": -7.5475655,
+    "DivYield": 0,
+    "ROE": 0,
+    "LastUpdated": "2026-10-01T22:59:36.219873"
+  },
+  "4200.SR": {
+    "Ticker": "4200.SR",
+    "Name": "Aldrees Petroleum and Transport",
+    "MarketCap": 11690000384,
+    "PE": 25.524017,
+    "PB": 6.8330607,
+    "DivYield": 171.0,
+    "ROE": 28.212,
+    "LastUpdated": "2026-10-03T06:02:59.576131"
+  },
+  "1050.SR": {
+    "Ticker": "1050.SR",
+    "Name": "Banque Saudi Fransi",
+    "MarketCap": 50397110272,
+    "PE": 10.18,
+    "PB": 1.1597176,
+    "DivYield": 532.0,
+    "ROE": 10.671999999999999,
+    "LastUpdated": "2026-10-01T11:22:19.866447"
+  },
+  "4012.SR": {
+    "Ticker": "4012.SR",
+    "Name": "Thob Al Aseel Co.",
+    "MarketCap": 1308000000,
+    "PE": 12.111111,
+    "PB": 2.0,
+    "DivYield": 671.0,
+    "ROE": 17.141001,
+    "LastUpdated": "2026-10-01T22:59:36.221437"
+  },
+  "3060.SR": {
+    "Ticker": "3060.SR",
+    "Name": "Yanbu Cement Co.",
+    "MarketCap": 2241224960,
+    "PE": 18.48052,
+    "PB": 0.9099629,
+    "DivYield": 1054.0,
+    "ROE": 4.755,
+    "LastUpdated": "2026-10-03T00:55:50.396085"
+  },
+  "3020.SR": {
+    "Ticker": "3020.SR",
+    "Name": "Yamama Cement Co.",
+    "MarketCap": 4309200384,
+    "PE": 8.903766,
+    "PB": 0.8560281,
+    "DivYield": 470.0,
+    "ROE": 9.764000000000001,
+    "LastUpdated": "2026-10-02T21:09:26.977748"
+  }
+}

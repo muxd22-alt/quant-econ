@@ -1,0 +1,456 @@
+{
+  "generatedAt": "2026-10-04T10:54:02.542Z",
+  "budgets": {
+    "server": {
+      "tiers": {
+        "P0": {
+          "goods": 1891.72,
+          "tax": 283.76,
+          "shipping": 608.55,
+          "landed": 2784.03,
+          "budget": 23000,
+          "remaining": 20215.97,
+          "pct": 12.1,
+          "status": "ok"
+        },
+        "P1": {
+          "goods": 11679.55,
+          "tax": 1751.93,
+          "shipping": 3757.23,
+          "landed": 17188.72,
+          "budget": 23000,
+          "remaining": 5811.28,
+          "pct": 74.73,
+          "status": "ok"
+        },
+        "P2": {
+          "goods": 12968.6,
+          "tax": 1945.29,
+          "shipping": 4171.91,
+          "landed": 19085.8,
+          "budget": 23000,
+          "remaining": 3914.2,
+          "pct": 82.98,
+          "status": "ok"
+        },
+        "P3": {
+          "goods": 15061.21,
+          "tax": 2259.18,
+          "shipping": 4845.09,
+          "landed": 22165.48,
+          "budget": 23000,
+          "remaining": 834.52,
+          "pct": 96.37,
+          "status": "ok"
+        }
+      }
+    },
+    "home": {
+      "tiers": {
+        "P0": {
+          "goods": 4129.42,
+          "tax": 619.41,
+          "shipping": 1328.41,
+          "landed": 6077.23,
+          "budget": 27000,
+          "remaining": 20922.77,
+          "pct": 22.51,
+          "status": "ok"
+        },
+        "P1": {
+          "goods": 8593.65,
+          "tax": 1289.05,
+          "shipping": 2764.52,
+          "landed": 12647.22,
+          "budget": 27000,
+          "remaining": 14352.78,
+          "pct": 46.84,
+          "status": "ok"
+        },
+        "P2": {
+          "goods": 11082.46,
+          "tax": 1662.37,
+          "shipping": 3565.15,
+          "landed": 16309.98,
+          "budget": 27000,
+          "remaining": 10690.02,
+          "pct": 60.41,
+          "status": "ok"
+        },
+        "P3": {
+          "goods": 11361.47,
+          "tax": 1704.22,
+          "shipping": 3654.91,
+          "landed": 16720.61,
+          "budget": 27000,
+          "remaining": 10279.39,
+          "pct": 61.93,
+          "status": "ok"
+        }
+      }
+    },
+    "overview": {
+      "totalBudget": 50000,
+      "contingencyReserve": 5000,
+      "deployable": 45000,
+      "coreLanded": 31814.18,
+      "coreWithinDeployable": true,
+      "shippingSAR": 8500,
+      "taxRate": 0.15,
+      "sarPerCny": 0.558029
+    }
+  },
+  "tip": {
+    "index": 7,
+    "total": 18,
+    "text": "Xianyu for parts (negotiate 10-15% down). Huaqiangbei / SEG for GPUs. Never pay before a live GPU-Z VRAM check."
+  },
+  "travel": {
+    "routes": [
+      {
+        "id": "ruh-szx",
+        "from": "Riyadh (RUH)",
+        "to": "Shenzhen (SZX)",
+        "via": "0 stops - nonstop",
+        "sarLow": 2000,
+        "sarHigh": 4000,
+        "note": "LOCKED PRIMARY: China Southern CZ5007 nonstop ~8h, 3x/week (verify days). Saudia has no passenger nonstop (SV992 is cargo-only) - SV itineraries connect via CAN. Direct fares feed the BOOK FLIGHT call",
+        "link": "https://www.google.com/travel/flights?q=Flights%20from%20Riyadh%20to%20Shenzhen%20nonstop&curr=SAR"
+      },
+      {
+        "id": "jed-szx",
+        "from": "Jeddah (JED)",
+        "to": "Shenzhen (SZX)",
+        "via": "1 stop",
+        "sarLow": 2200,
+        "sarHigh": 3800,
+        "note": "Fallback gateway (1 stop) for the Huaqiangbei / SEG electronics run",
+        "link": "https://www.google.com/travel/flights?q=Flights%20from%20Jeddah%20to%20Shenzhen&curr=SAR"
+      },
+      {
+        "id": "jed-bjs",
+        "from": "Jeddah (JED)",
+        "to": "Beijing (BJS)",
+        "via": "1 stop",
+        "sarLow": 1800,
+        "sarHigh": 3200,
+        "note": "Fallback - often cheaper than SZX if the route is flexible",
+        "link": "https://www.google.com/travel/flights?q=Flights%20from%20Jeddah%20to%20Beijing&curr=SAR"
+      },
+      {
+        "id": "ruh-pvg",
+        "from": "Riyadh (RUH)",
+        "to": "Shanghai (PVG)",
+        "via": "1 stop",
+        "sarLow": 2300,
+        "sarHigh": 3600,
+        "note": "Fallback - furniture clusters: Foshan is a train ride away from the SZX arrival anyway",
+        "link": "https://www.google.com/travel/flights?q=Flights%20from%20Riyadh%20to%20Shanghai&curr=SAR"
+      }
+    ],
+    "stays": [
+      {
+        "city": "Shenzhen",
+        "cnyNightLow": 120,
+        "cnyNightHigh": 450,
+        "link": "https://www.booking.com/searchresults.html?ss=Shenzhen"
+      },
+      {
+        "city": "Guangzhou / Foshan",
+        "cnyNightLow": 110,
+        "cnyNightHigh": 400,
+        "link": "https://www.booking.com/searchresults.html?ss=Foshan"
+      },
+      {
+        "city": "Beijing",
+        "cnyNightLow": 130,
+        "cnyNightHigh": 480,
+        "link": "https://www.booking.com/searchresults.html?ss=Beijing"
+      }
+    ]
+  },
+  "logistics": {
+    "shippingSAR": 8500,
+    "taxRate": 0.15,
+    "taxOn": "goods",
+    "note": "Sea freight ~8,500 SAR for the consolidated shipment. 15% import tax applied to goods value."
+  },
+  "warnings": [],
+  "newsCount": 34,
+  "call": {
+    "verdict": "BOOK FLIGHT",
+    "confidence": "ESTIMATE",
+    "driver": "trip readiness reached READY",
+    "reasoning": "1 SAR = 1.7920 CNY - 0.03% below its 9-point average (signal NEUTRAL, -0.41% drift); dual-source FX verified. Core plan lands at 29,836 SAR vs 45,000 deployable - 15,164 SAR headroom, 5,000 SAR reserve held back. 43 targets set, none crossed - closest is 2TB PCIe 4.0 NVMe (x2: VMs/models + game library) at +5.1% above target. Trip readiness 85/100 (READY) - fx trend stability 100, p0/p1 target coverage 100, flight-fare movement 50; fares flat since 2026-09-28. Call: BOOK FLIGHT - driven by trip readiness reached READY.",
+    "inputs": {
+      "sarCny": 1.792021,
+      "pctVsAvg": -0.03,
+      "signal": "NEUTRAL",
+      "landed": 29836,
+      "headroom": 15164,
+      "crossed": 0,
+      "readiness": 85,
+      "goodsCny": 47350
+    }
+  },
+  "diff": "Since yesterday: call held at BOOK FLIGHT · CNY vs avg -0.1% → -0.03% · landed -20 SAR.",
+  "crossed": {
+    "crossed": [],
+    "withTargets": 43,
+    "total": 43,
+    "closest": {
+      "item": {
+        "id": "srv-nvme",
+        "bundle": "server",
+        "category": "Storage",
+        "name": "2TB PCIe 4.0 NVMe (x2: VMs/models + game library)",
+        "qty": 2,
+        "cny": 620,
+        "confidence": "estimate",
+        "priority": "P1",
+        "phase": 2,
+        "why": "Drive 1: VM images + model weights. Drive 2: Steam/game library - keep games off the ZFS pools",
+        "target_cny": 590
+      },
+      "abovePct": 5.1
+    }
+  },
+  "readiness": {
+    "score": 85,
+    "band": "READY",
+    "booked": false,
+    "components": [
+      {
+        "key": "fx",
+        "label": "FX trend stability",
+        "score": 100,
+        "value": "-0.41% drift over 8 pts"
+      },
+      {
+        "key": "targets",
+        "label": "P0/P1 target coverage",
+        "score": 100,
+        "value": "29 of 29 items have targets"
+      },
+      {
+        "key": "fare",
+        "label": "Flight-fare movement",
+        "score": 50,
+        "value": "fares flat since 2026-09-28"
+      }
+    ],
+    "fare": {
+      "score": 50,
+      "deltaPct": 0,
+      "note": "fares flat since 2026-09-28",
+      "low": 2000,
+      "refDate": "2026-09-28"
+    }
+  },
+  "checklist": {
+    "items": [
+      {
+        "id": "shortlist",
+        "label": "Exact SKUs shortlisted and prices verified in the dashboard",
+        "group": "Before trip",
+        "done": false
+      },
+      {
+        "id": "visa",
+        "label": "China visa / entry requirements sorted",
+        "group": "Before trip",
+        "done": false
+      },
+      {
+        "id": "cables",
+        "label": "Ethernet runs planned per room (before furniture lands)",
+        "group": "Before trip",
+        "done": false
+      },
+      {
+        "id": "measure",
+        "label": "Doorway / elevator measurements for sofas and server case",
+        "group": "Before trip",
+        "done": false
+      },
+      {
+        "id": "fare-check",
+        "label": "Live fare check via flight links - update config bands",
+        "group": "Before trip",
+        "done": false
+      },
+      {
+        "id": "flights",
+        "label": "Flights booked",
+        "group": "Booking",
+        "done": false
+      },
+      {
+        "id": "hotel",
+        "label": "Hotel booked (Shenzhen / Foshan)",
+        "group": "Booking",
+        "done": false
+      },
+      {
+        "id": "cash",
+        "label": "Bank notified + CNY cash plan",
+        "group": "Booking",
+        "done": false
+      },
+      {
+        "id": "phase1",
+        "label": "Phase 1 order list ready (case / mobo / CPU / PSU)",
+        "group": "On arrival",
+        "done": false
+      },
+      {
+        "id": "freight",
+        "label": "Freight forwarder / consolidation contact confirmed",
+        "group": "On arrival",
+        "done": false
+      },
+      {
+        "id": "gputest",
+        "label": "GPU test kit ready (GPU-Z + 10-min load test)",
+        "group": "On arrival",
+        "done": false
+      },
+      {
+        "id": "xianyu",
+        "label": "Xianyu account + payment method ready",
+        "group": "On arrival",
+        "done": false
+      }
+    ]
+  },
+  "decisionsTail": [
+    {
+      "date": "2026-09-27",
+      "verdict": "WATCH",
+      "confidence": "VERIFIED",
+      "driver": "no statistical edge today",
+      "inputs": {
+        "sarCny": 1.794409,
+        "pctVsAvg": 0.03,
+        "signal": "NEUTRAL",
+        "landed": 28415,
+        "headroom": 16585,
+        "crossed": 0,
+        "readiness": 85,
+        "goodsCny": 37180
+      }
+    },
+    {
+      "date": "2026-09-28",
+      "verdict": "WATCH",
+      "confidence": "VERIFIED",
+      "driver": "no statistical edge today",
+      "inputs": {
+        "sarCny": 1.791864,
+        "pctVsAvg": -0.07,
+        "signal": "NEUTRAL",
+        "landed": 34357,
+        "headroom": 10643,
+        "crossed": 0,
+        "readiness": 85,
+        "goodsCny": 47005
+      }
+    },
+    {
+      "date": "2026-09-29",
+      "verdict": "BOOK FLIGHT",
+      "confidence": "ESTIMATE",
+      "driver": "trip readiness reached READY",
+      "inputs": {
+        "sarCny": 1.792421,
+        "pctVsAvg": -0.05,
+        "signal": "NEUTRAL",
+        "landed": 29831,
+        "headroom": 15169,
+        "crossed": 0,
+        "readiness": 85,
+        "goodsCny": 47350
+      }
+    },
+    {
+      "date": "2026-09-30",
+      "verdict": "BOOK FLIGHT",
+      "confidence": "ESTIMATE",
+      "driver": "trip readiness reached READY",
+      "inputs": {
+        "sarCny": 1.791429,
+        "pctVsAvg": -0.06,
+        "signal": "NEUTRAL",
+        "landed": 29844,
+        "headroom": 15156,
+        "crossed": 0,
+        "readiness": 85,
+        "goodsCny": 47350
+      }
+    },
+    {
+      "date": "2026-10-01",
+      "verdict": "BOOK FLIGHT",
+      "confidence": "ESTIMATE",
+      "driver": "trip readiness reached READY",
+      "inputs": {
+        "sarCny": 1.791167,
+        "pctVsAvg": -0.08,
+        "signal": "NEUTRAL",
+        "landed": 29847,
+        "headroom": 15153,
+        "crossed": 0,
+        "readiness": 85,
+        "goodsCny": 47350
+      }
+    },
+    {
+      "date": "2026-10-02",
+      "verdict": "BOOK FLIGHT",
+      "confidence": "ESTIMATE",
+      "driver": "trip readiness reached READY",
+      "inputs": {
+        "sarCny": 1.790548,
+        "pctVsAvg": -0.22,
+        "signal": "NEUTRAL",
+        "landed": 29855,
+        "headroom": 15145,
+        "crossed": 0,
+        "readiness": 85,
+        "goodsCny": 47350
+      }
+    },
+    {
+      "date": "2026-10-03",
+      "verdict": "BOOK FLIGHT",
+      "confidence": "ESTIMATE",
+      "driver": "trip readiness reached READY",
+      "inputs": {
+        "sarCny": 1.790502,
+        "pctVsAvg": -0.1,
+        "signal": "NEUTRAL",
+        "landed": 29856,
+        "headroom": 15144,
+        "crossed": 0,
+        "readiness": 85,
+        "goodsCny": 47350
+      }
+    },
+    {
+      "date": "2026-10-04",
+      "verdict": "BOOK FLIGHT",
+      "confidence": "ESTIMATE",
+      "driver": "trip readiness reached READY",
+      "inputs": {
+        "sarCny": 1.792021,
+        "pctVsAvg": -0.03,
+        "signal": "NEUTRAL",
+        "landed": 29836,
+        "headroom": 15164,
+        "crossed": 0,
+        "readiness": 85,
+        "goodsCny": 47350
+      }
+    }
+  ]
+}
